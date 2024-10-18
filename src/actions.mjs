@@ -1,5 +1,5 @@
 const api = {
-  req : (method, url, opts) => m.request({method, url, opts}),
+  req : (method, url, opts) => m.request({method, url, ...opts}),
   get : (url, opts) => api.req('get',  url, opts),
   post: (url, opts) => api.req('post', url, opts),
   put : (url, opts) => api.req('put',  url, opts),

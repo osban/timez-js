@@ -1,1 +1,3280 @@
-!function(){"use strict";var e,t,n="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function r(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}function o(){if(t)return e;function n(e,t,n,r,o,i){return{tag:e,key:t,attrs:n,children:r,text:o,dom:i,domSize:void 0,state:void 0,events:void 0,instance:void 0}}return t=1,n.normalize=function(e){return Array.isArray(e)?n("[",void 0,void 0,n.normalizeChildren(e),void 0,void 0):null==e||"boolean"==typeof e?null:"object"==typeof e?e:n("#",void 0,void 0,String(e),void 0,void 0)},n.normalizeChildren=function(e){var t=[];if(e.length){for(var r=null!=e[0]&&null!=e[0].key,o=1;o<e.length;o++)if((null!=e[o]&&null!=e[o].key)!==r)throw new TypeError(!r||null==e[o]&&"boolean"!=typeof e[o]?"In fragments, vnodes must either all have keys or none have keys.":"In fragments, vnodes must either all have keys or none have keys. You may wish to consider using an explicit keyed empty fragment, m.fragment({key: ...}), instead of a hole.");for(o=0;o<e.length;o++)t[o]=n.normalize(e[o])}return t},e=n}var i,l,a=o(),c=function(){var e,t=arguments,n=arguments[this],r=this+1;if(null==n?n={}:("object"!=typeof n||null!=n.tag||Array.isArray(n))&&(n={},r=this),arguments.length===r+1)e=arguments[r],Array.isArray(e)||(e=[e]);else for(e=[];r<arguments.length;)e.push(t[r++]);return a("",n.key,n,e)};function s(){return l?i:(l=1,i={}.hasOwnProperty)}var u=o(),f=c,d=s(),p=/(?:(^|#|\.)([^#\.\[\]]+))|(\[(.+?)(?:\s*=\s*("|'|)((?:\\["'\]]|.)*?)\5)?\])/g,v={};function h(e){for(var t in e)if(d.call(e,t))return!1;return!0}var m=function(e){if(null==e||"string"!=typeof e&&"function"!=typeof e&&"function"!=typeof e.view)throw Error("The selector must be either a string or a component.");var t=f.apply(1,arguments);return"string"==typeof e&&(t.children=u.normalizeChildren(t.children),"["!==e)?function(e,t){var n=t.attrs,r=d.call(n,"class"),o=r?n.class:n.className;if(t.tag=e.tag,t.attrs={},!h(e.attrs)&&!h(n)){var i={};for(var l in n)d.call(n,l)&&(i[l]=n[l]);n=i}for(var l in e.attrs)d.call(e.attrs,l)&&"className"!==l&&!d.call(n,l)&&(n[l]=e.attrs[l]);for(var l in null==o&&null==e.attrs.className||(n.className=null!=o?null!=e.attrs.className?String(e.attrs.className)+" "+String(o):o:null!=e.attrs.className?e.attrs.className:null),r&&(n.class=null),n)if(d.call(n,l)&&"key"!==l){t.attrs=n;break}return t}(v[e]||function(e){for(var t,n="div",r=[],o={};t=p.exec(e);){var i=t[1],l=t[2];if(""===i&&""!==l)n=l;else if("#"===i)o.id=l;else if("."===i)r.push(l);else if("["===t[3][0]){var a=t[6];a&&(a=a.replace(/\\(["'])/g,"$1").replace(/\\\\/g,"\\")),"class"===t[4]?r.push(a):o[t[4]]=""===a?a:a||!0}}return r.length>0&&(o.className=r.join(" ")),v[e]={tag:n,attrs:o}}(e),t):(t.tag=e,t)},g=o(),y=o(),w=c,b=m;b.trust=function(e){return null==e&&(e=""),g("<",void 0,void 0,e,void 0,void 0)},b.fragment=function(){var e=w.apply(0,arguments);return e.tag="[",e.children=y.normalizeChildren(e.children),e};var x,k,j=b,L={exports:{}};function S(){if(k)return x;k=1;var e=function(t){if(!(this instanceof e))throw new Error("Promise must be called with 'new'.");if("function"!=typeof t)throw new TypeError("executor must be a function.");var n=this,r=[],o=[],i=s(r,!0),l=s(o,!1),a=n._instance={resolvers:r,rejectors:o},c="function"==typeof setImmediate?setImmediate:setTimeout;function s(e,t){return function i(s){var f;try{if(!t||null==s||"object"!=typeof s&&"function"!=typeof s||"function"!=typeof(f=s.then))c((function(){t||0!==e.length||console.error("Possible unhandled promise rejection:",s);for(var n=0;n<e.length;n++)e[n](s);r.length=0,o.length=0,a.state=t,a.retry=function(){i(s)}}));else{if(s===n)throw new TypeError("Promise can't be resolved with itself.");u(f.bind(s))}}catch(e){l(e)}}}function u(e){var t=0;function n(e){return function(n){t++>0||e(n)}}var r=n(l);try{e(n(i),r)}catch(e){r(e)}}u(t)};return e.prototype.then=function(t,n){var r,o,i=this._instance;function l(e,t,n,l){t.push((function(t){if("function"!=typeof e)n(t);else try{r(e(t))}catch(e){o&&o(e)}})),"function"==typeof i.retry&&l===i.state&&i.retry()}var a=new e((function(e,t){r=e,o=t}));return l(t,i.resolvers,r,!0),l(n,i.rejectors,o,!1),a},e.prototype.catch=function(e){return this.then(null,e)},e.prototype.finally=function(t){return this.then((function(n){return e.resolve(t()).then((function(){return n}))}),(function(n){return e.resolve(t()).then((function(){return e.reject(n)}))}))},e.resolve=function(t){return t instanceof e?t:new e((function(e){e(t)}))},e.reject=function(t){return new e((function(e,n){n(t)}))},e.all=function(t){return new e((function(e,n){var r=t.length,o=0,i=[];if(0===t.length)e([]);else for(var l=0;l<t.length;l++)!function(l){function a(t){o++,i[l]=t,o===r&&e(i)}null==t[l]||"object"!=typeof t[l]&&"function"!=typeof t[l]||"function"!=typeof t[l].then?a(t[l]):t[l].then(a,n)}(l)}))},e.race=function(t){return new e((function(e,n){for(var r=0;r<t.length;r++)t[r].then(e,n)}))},x=e}var C=S();"undefined"!=typeof window?(void 0===window.Promise?window.Promise=C:window.Promise.prototype.finally||(window.Promise.prototype.finally=C.prototype.finally),L.exports=window.Promise):void 0!==n?(void 0===n.Promise?n.Promise=C:n.Promise.prototype.finally||(n.Promise.prototype.finally=C.prototype.finally),L.exports=n.Promise):L.exports=C;var A,E,z,T,O=L.exports;function P(){if(E)return A;E=1;var e=o();return A=function(t){var n,r=t&&t.document,o={svg:"http://www.w3.org/2000/svg",math:"http://www.w3.org/1998/Math/MathML"};function i(e){return e.attrs&&e.attrs.xmlns||o[e.tag]}function l(e,t){if(e.state!==t)throw new Error("'vnode.state' must not be modified.")}function a(e){var t=e.state;try{return this.apply(t,arguments)}finally{l(e,t)}}function c(){try{return r.activeElement}catch(e){return null}}function s(e,t,n,r,o,i,l){for(var a=n;a<r;a++){var c=t[a];null!=c&&u(e,c,o,l,i)}}function u(t,n,o,l,c){var f=n.tag;if("string"==typeof f)switch(n.state={},null!=n.attrs&&R(n.attrs,n,o),f){case"#":!function(e,t,n){t.dom=r.createTextNode(t.children),b(e,t.dom,n)}(t,n,c);break;case"<":d(t,n,l,c);break;case"[":!function(e,t,n,o,i){var l=r.createDocumentFragment();if(null!=t.children){var a=t.children;s(l,a,0,a.length,n,null,o)}t.dom=l.firstChild,t.domSize=l.childNodes.length,b(e,l,i)}(t,n,o,l,c);break;default:!function(e,t,n,o,l){var a=t.tag,c=t.attrs,u=c&&c.is;o=i(t)||o;var f=o?u?r.createElementNS(o,a,{is:u}):r.createElementNS(o,a):u?r.createElement(a,{is:u}):r.createElement(a);t.dom=f,null!=c&&function(e,t,n){"input"===e.tag&&null!=t.type&&e.dom.setAttribute("type",t.type);var r=null!=t&&"input"===e.tag&&"file"===t.type;for(var o in t)A(e,o,null,t[o],n,r)}(t,c,o);if(b(e,f,l),!x(t)&&null!=t.children){var d=t.children;s(f,d,0,d.length,n,null,o),"select"===t.tag&&null!=c&&function(e,t){if("value"in t)if(null===t.value)-1!==e.dom.selectedIndex&&(e.dom.value=null);else{var n=""+t.value;e.dom.value===n&&-1!==e.dom.selectedIndex||(e.dom.value=n)}"selectedIndex"in t&&A(e,"selectedIndex",null,t.selectedIndex,void 0)}(t,c)}}(t,n,o,l,c)}else!function(t,n,r,o,i){(function(t,n){var r;if("function"==typeof t.tag.view){if(t.state=Object.create(t.tag),null!=(r=t.state.view).$$reentrantLock$$)return;r.$$reentrantLock$$=!0}else{if(t.state=void 0,null!=(r=t.tag).$$reentrantLock$$)return;r.$$reentrantLock$$=!0,t.state=null!=t.tag.prototype&&"function"==typeof t.tag.prototype.view?new t.tag(t):t.tag(t)}R(t.state,t,n),null!=t.attrs&&R(t.attrs,t,n);if(t.instance=e.normalize(a.call(t.state.view,t)),t.instance===t)throw Error("A view cannot return the vnode it received as argument");r.$$reentrantLock$$=null})(n,r),null!=n.instance?(u(t,n.instance,r,o,i),n.dom=n.instance.dom,n.domSize=null!=n.dom?n.instance.domSize:0):n.domSize=0}(t,n,o,l,c)}var f={caption:"table",thead:"table",tbody:"table",tfoot:"table",tr:"tbody",th:"tr",td:"tr",colgroup:"table",col:"colgroup"};function d(e,t,n,o){var i=t.children.match(/^\s*?<(\w+)/im)||[],l=r.createElement(f[i[1]]||"div");"http://www.w3.org/2000/svg"===n?(l.innerHTML='<svg xmlns="http://www.w3.org/2000/svg">'+t.children+"</svg>",l=l.firstChild):l.innerHTML=t.children,t.dom=l.firstChild,t.domSize=l.childNodes.length,t.instance=[];for(var a,c=r.createDocumentFragment();a=l.firstChild;)t.instance.push(a),c.appendChild(a);b(e,c,o)}function p(e,t,n,r,o,i){if(t!==n&&(null!=t||null!=n))if(null==t||0===t.length)s(e,n,0,n.length,r,o,i);else if(null==n||0===n.length)k(e,t,0,t.length);else{var l=null!=t[0]&&null!=t[0].key,a=null!=n[0]&&null!=n[0].key,c=0,f=0;if(!l)for(;f<t.length&&null==t[f];)f++;if(!a)for(;c<n.length&&null==n[c];)c++;if(l!==a)k(e,t,f,t.length),s(e,n,c,n.length,r,o,i);else if(a){for(var d,p,w,b,x,L=t.length-1,S=n.length-1;L>=f&&S>=c&&(w=t[L],b=n[S],w.key===b.key);)w!==b&&v(e,w,b,r,o,i),null!=b.dom&&(o=b.dom),L--,S--;for(;L>=f&&S>=c&&(d=t[f],p=n[c],d.key===p.key);)f++,c++,d!==p&&v(e,d,p,r,g(t,f,o),i);for(;L>=f&&S>=c&&c!==S&&d.key===b.key&&w.key===p.key;)y(e,w,x=g(t,f,o)),w!==p&&v(e,w,p,r,x,i),++c<=--S&&y(e,d,o),d!==b&&v(e,d,b,r,o,i),null!=b.dom&&(o=b.dom),f++,w=t[--L],b=n[S],d=t[f],p=n[c];for(;L>=f&&S>=c&&w.key===b.key;)w!==b&&v(e,w,b,r,o,i),null!=b.dom&&(o=b.dom),S--,w=t[--L],b=n[S];if(c>S)k(e,t,f,L+1);else if(f>L)s(e,n,c,S+1,r,o,i);else{var C,A,E=o,z=S-c+1,T=new Array(z),O=0,P=0,N=2147483647,$=0;for(P=0;P<z;P++)T[P]=-1;for(P=S;P>=c;P--){null==C&&(C=h(t,f,L+1));var M=C[(b=n[P]).key];null!=M&&(N=M<N?M:-1,T[P-c]=M,w=t[M],t[M]=null,w!==b&&v(e,w,b,r,o,i),null!=b.dom&&(o=b.dom),$++)}if(o=E,$!==L-f+1&&k(e,t,f,L+1),0===$)s(e,n,c,S+1,r,o,i);else if(-1===N)for(A=function(e){var t=[0],n=0,r=0,o=0,i=m.length=e.length;for(o=0;o<i;o++)m[o]=e[o];for(o=0;o<i;++o)if(-1!==e[o]){var l=t[t.length-1];if(e[l]<e[o])m[o]=l,t.push(o);else{for(n=0,r=t.length-1;n<r;){var a=(n>>>1)+(r>>>1)+(n&r&1);e[t[a]]<e[o]?n=a+1:r=a}e[o]<e[t[n]]&&(n>0&&(m[o]=t[n-1]),t[n]=o)}}n=t.length,r=t[n-1];for(;n-- >0;)t[n]=r,r=m[r];return m.length=0,t}(T),O=A.length-1,P=S;P>=c;P--)p=n[P],-1===T[P-c]?u(e,p,r,i,o):A[O]===P-c?O--:y(e,p,o),null!=p.dom&&(o=n[P].dom);else for(P=S;P>=c;P--)p=n[P],-1===T[P-c]&&u(e,p,r,i,o),null!=p.dom&&(o=n[P].dom)}}else{var I=t.length<n.length?t.length:n.length;for(c=c<f?c:f;c<I;c++)(d=t[c])===(p=n[c])||null==d&&null==p||(null==d?u(e,p,r,i,g(t,c+1,o)):null==p?j(e,d):v(e,d,p,r,g(t,c+1,o),i));t.length>I&&k(e,t,c,t.length),n.length>I&&s(e,n,c,n.length,r,o,i)}}}function v(t,n,r,o,l,c){var s=n.tag;if(s===r.tag){if(r.state=n.state,r.events=n.events,function(e,t){do{var n;if(null!=e.attrs&&"function"==typeof e.attrs.onbeforeupdate)if(void 0!==(n=a.call(e.attrs.onbeforeupdate,e,t))&&!n)break;if("string"!=typeof e.tag&&"function"==typeof e.state.onbeforeupdate)if(void 0!==(n=a.call(e.state.onbeforeupdate,e,t))&&!n)break;return!1}while(0);return e.dom=t.dom,e.domSize=t.domSize,e.instance=t.instance,e.attrs=t.attrs,e.children=t.children,e.text=t.text,!0}(r,n))return;if("string"==typeof s)switch(null!=r.attrs&&F(r.attrs,r,o),s){case"#":!function(e,t){e.children.toString()!==t.children.toString()&&(e.dom.nodeValue=t.children);t.dom=e.dom}(n,r);break;case"<":!function(e,t,n,r,o){t.children!==n.children?(L(e,t),d(e,n,r,o)):(n.dom=t.dom,n.domSize=t.domSize,n.instance=t.instance)}(t,n,r,c,l);break;case"[":!function(e,t,n,r,o,i){p(e,t.children,n.children,r,o,i);var l=0,a=n.children;if(n.dom=null,null!=a){for(var c=0;c<a.length;c++){var s=a[c];null!=s&&null!=s.dom&&(null==n.dom&&(n.dom=s.dom),l+=s.domSize||1)}1!==l&&(n.domSize=l)}}(t,n,r,o,l,c);break;default:!function(e,t,n,r){var o=t.dom=e.dom;r=i(t)||r,"textarea"===t.tag&&null==t.attrs&&(t.attrs={});(function(e,t,n,r){t&&t===n&&console.warn("Don't reuse attrs object, use new object for every redraw, this will throw in next major");if(null!=n){"input"===e.tag&&null!=n.type&&e.dom.setAttribute("type",n.type);var o="input"===e.tag&&"file"===n.type;for(var i in n)A(e,i,t&&t[i],n[i],r,o)}var l;if(null!=t)for(var i in t)null==(l=t[i])||null!=n&&null!=n[i]||E(e,i,l,r)})(t,e.attrs,t.attrs,r),x(t)||p(o,e.children,t.children,n,null,r)}(n,r,o,c)}else!function(t,n,r,o,i,l){if(r.instance=e.normalize(a.call(r.state.view,r)),r.instance===r)throw Error("A view cannot return the vnode it received as argument");F(r.state,r,o),null!=r.attrs&&F(r.attrs,r,o);null!=r.instance?(null==n.instance?u(t,r.instance,o,l,i):v(t,n.instance,r.instance,o,i,l),r.dom=r.instance.dom,r.domSize=r.instance.domSize):null!=n.instance?(j(t,n.instance),r.dom=void 0,r.domSize=0):(r.dom=n.dom,r.domSize=n.domSize)}(t,n,r,o,l,c)}else j(t,n),u(t,r,o,c,l)}function h(e,t,n){for(var r=Object.create(null);t<n;t++){var o=e[t];if(null!=o){var i=o.key;null!=i&&(r[i]=t)}}return r}var m=[];function g(e,t,n){for(;t<e.length;t++)if(null!=e[t]&&null!=e[t].dom)return e[t].dom;return n}function y(e,t,n){var o=r.createDocumentFragment();w(e,o,t),b(e,o,n)}function w(e,t,n){for(;null!=n.dom&&n.dom.parentNode===e;){if("string"!=typeof n.tag){if(null!=(n=n.instance))continue}else if("<"===n.tag)for(var r=0;r<n.instance.length;r++)t.appendChild(n.instance[r]);else if("["!==n.tag)t.appendChild(n.dom);else if(1===n.children.length){if(null!=(n=n.children[0]))continue}else for(r=0;r<n.children.length;r++){var o=n.children[r];null!=o&&w(e,t,o)}break}}function b(e,t,n){null!=n?e.insertBefore(t,n):e.appendChild(t)}function x(e){if(null==e.attrs||null==e.attrs.contenteditable&&null==e.attrs.contentEditable)return!1;var t=e.children;if(null!=t&&1===t.length&&"<"===t[0].tag){var n=t[0].children;e.dom.innerHTML!==n&&(e.dom.innerHTML=n)}else if(null!=t&&0!==t.length)throw new Error("Child node of a contenteditable must be trusted.");return!0}function k(e,t,n,r){for(var o=n;o<r;o++){var i=t[o];null!=i&&j(e,i)}}function j(e,t){var n,r,o,i=0,c=t.state;"string"!=typeof t.tag&&"function"==typeof t.state.onbeforeremove&&(null!=(o=a.call(t.state.onbeforeremove,t))&&"function"==typeof o.then&&(i=1,n=o));t.attrs&&"function"==typeof t.attrs.onbeforeremove&&(null!=(o=a.call(t.attrs.onbeforeremove,t))&&"function"==typeof o.then&&(i|=2,r=o));if(l(t,c),i){if(null!=n){var s=function(){1&i&&((i&=2)||u())};n.then(s,s)}if(null!=r){s=function(){2&i&&((i&=1)||u())};r.then(s,s)}}else C(t),S(e,t);function u(){l(t,c),C(t),S(e,t)}}function L(e,t){for(var n=0;n<t.instance.length;n++)e.removeChild(t.instance[n])}function S(e,t){for(;null!=t.dom&&t.dom.parentNode===e;){if("string"!=typeof t.tag){if(null!=(t=t.instance))continue}else if("<"===t.tag)L(e,t);else{if("["!==t.tag&&(e.removeChild(t.dom),!Array.isArray(t.children)))break;if(1===t.children.length){if(null!=(t=t.children[0]))continue}else for(var n=0;n<t.children.length;n++){var r=t.children[n];null!=r&&S(e,r)}}break}}function C(e){if("string"!=typeof e.tag&&"function"==typeof e.state.onremove&&a.call(e.state.onremove,e),e.attrs&&"function"==typeof e.attrs.onremove&&a.call(e.attrs.onremove,e),"string"!=typeof e.tag)null!=e.instance&&C(e.instance);else{var t=e.children;if(Array.isArray(t))for(var n=0;n<t.length;n++){var r=t[n];null!=r&&C(r)}}}function A(e,t,n,o,i,l){if(!("key"===t||"is"===t||null==o||z(t)||n===o&&!function(e,t){return"value"===t||"checked"===t||"selectedIndex"===t||"selected"===t&&e.dom===c()||"option"===e.tag&&e.dom.parentNode===r.activeElement}(e,t)&&"object"!=typeof o||"type"===t&&"input"===e.tag)){if("o"===t[0]&&"n"===t[1])return D(e,t,o);if("xlink:"===t.slice(0,6))e.dom.setAttributeNS("http://www.w3.org/1999/xlink",t.slice(6),o);else if("style"===t)M(e.dom,n,o);else if(T(e,t,i)){if("value"===t){if(("input"===e.tag||"textarea"===e.tag)&&e.dom.value===""+o&&(l||e.dom===c()))return;if("select"===e.tag&&null!==n&&e.dom.value===""+o)return;if("option"===e.tag&&null!==n&&e.dom.value===""+o)return;if(l&&""+o!="")return void console.error("`value` is read-only on file inputs!")}e.dom[t]=o}else"boolean"==typeof o?o?e.dom.setAttribute(t,""):e.dom.removeAttribute(t):e.dom.setAttribute("className"===t?"class":t,o)}}function E(e,t,n,r){if("key"!==t&&"is"!==t&&null!=n&&!z(t))if("o"===t[0]&&"n"===t[1])D(e,t,void 0);else if("style"===t)M(e.dom,n,null);else if(!T(e,t,r)||"className"===t||"title"===t||"value"===t&&("option"===e.tag||"select"===e.tag&&-1===e.dom.selectedIndex&&e.dom===c())||"input"===e.tag&&"type"===t){var o=t.indexOf(":");-1!==o&&(t=t.slice(o+1)),!1!==n&&e.dom.removeAttribute("className"===t?"class":t)}else e.dom[t]=null}function z(e){return"oninit"===e||"oncreate"===e||"onupdate"===e||"onremove"===e||"onbeforeremove"===e||"onbeforeupdate"===e}function T(e,t,n){return void 0===n&&(e.tag.indexOf("-")>-1||null!=e.attrs&&e.attrs.is||"href"!==t&&"list"!==t&&"form"!==t&&"width"!==t&&"height"!==t)&&t in e.dom}var O,P=/[A-Z]/g;function N(e){return"-"+e.toLowerCase()}function $(e){return"-"===e[0]&&"-"===e[1]?e:"cssFloat"===e?"float":e.replace(P,N)}function M(e,t,n){if(t===n);else if(null==n)e.style.cssText="";else if("object"!=typeof n)e.style.cssText=n;else if(null==t||"object"!=typeof t)for(var r in e.style.cssText="",n){null!=(o=n[r])&&e.style.setProperty($(r),String(o))}else{for(var r in n){var o;null!=(o=n[r])&&(o=String(o))!==String(t[r])&&e.style.setProperty($(r),o)}for(var r in t)null!=t[r]&&null==n[r]&&e.style.removeProperty($(r))}}function I(){this._=n}function D(e,t,r){if(null!=e.events){if(e.events._=n,e.events[t]===r)return;null==r||"function"!=typeof r&&"object"!=typeof r?(null!=e.events[t]&&e.dom.removeEventListener(t.slice(2),e.events,!1),e.events[t]=void 0):(null==e.events[t]&&e.dom.addEventListener(t.slice(2),e.events,!1),e.events[t]=r)}else null==r||"function"!=typeof r&&"object"!=typeof r||(e.events=new I,e.dom.addEventListener(t.slice(2),e.events,!1),e.events[t]=r)}function R(e,t,n){"function"==typeof e.oninit&&a.call(e.oninit,t),"function"==typeof e.oncreate&&n.push(a.bind(e.oncreate,t))}function F(e,t,n){"function"==typeof e.onupdate&&n.push(a.bind(e.onupdate,t))}return I.prototype=Object.create(null),I.prototype.handleEvent=function(e){var t,n=this["on"+e.type];"function"==typeof n?t=n.call(e.currentTarget,e):"function"==typeof n.handleEvent&&n.handleEvent(e),this._&&!1!==e.redraw&&(0,this._)(),!1===t&&(e.preventDefault(),e.stopPropagation())},function(t,r,o){if(!t)throw new TypeError("DOM element being rendered to does not exist.");if(null!=O&&t.contains(O))throw new TypeError("Node is currently being rendered to and thus is locked.");var i=n,l=O,a=[],s=c(),u=t.namespaceURI;O=t,n="function"==typeof o?o:void 0;try{null==t.vnodes&&(t.textContent=""),r=e.normalizeChildren(Array.isArray(r)?r:[r]),p(t,t.vnodes,r,a,null,"http://www.w3.org/1999/xhtml"===u?void 0:u),t.vnodes=r,null!=s&&c()!==s&&"function"==typeof s.focus&&s.focus();for(var f=0;f<a.length;f++)a[f]()}finally{n=i,O=l}}},A}function N(){return T?z:(T=1,z=P()("undefined"!=typeof window?window:null))}var $,M,I,D,R,F,U=o(),_=function(e,t,n){var r=[],o=!1,i=-1;function l(){for(i=0;i<r.length;i+=2)try{e(r[i],U(r[i+1]),a)}catch(e){n.error(e)}i=-1}function a(){o||(o=!0,t((function(){o=!1,l()})))}return a.sync=l,{mount:function(t,n){if(null!=n&&null==n.view&&"function"!=typeof n)throw new TypeError("m.mount expects a component, not a vnode.");var o=r.indexOf(t);o>=0&&(r.splice(o,2),o<=i&&(i-=2),e(t,[])),null!=n&&(r.push(t,n),e(t,U(n),a))},redraw:a}}(N(),"undefined"!=typeof requestAnimationFrame?requestAnimationFrame:null,"undefined"!=typeof console?console:null);function q(){return M?$:(M=1,$=function(e){if("[object Object]"!==Object.prototype.toString.call(e))return"";var t=[];for(var n in e)r(n,e[n]);return t.join("&");function r(e,n){if(Array.isArray(n))for(var o=0;o<n.length;o++)r(e+"["+o+"]",n[o]);else if("[object Object]"===Object.prototype.toString.call(n))for(var o in n)r(e+"["+o+"]",n[o]);else t.push(encodeURIComponent(e)+(null!=n&&""!==n?"="+encodeURIComponent(n):""))}})}function B(){if(D)return I;D=1;var e=s();return I=Object.assign||function(t,n){for(var r in n)e.call(n,r)&&(t[r]=n[r])}}function H(){if(F)return R;F=1;var e=q(),t=B();return R=function(n,r){if(/:([^\/\.-]+)(\.{3})?:/.test(n))throw new SyntaxError("Template parameter names must be separated by either a '/', '-', or '.'.");if(null==r)return n;var o=n.indexOf("?"),i=n.indexOf("#"),l=i<0?n.length:i,a=o<0?l:o,c=n.slice(0,a),s={};t(s,r);var u=c.replace(/:([^\/\.-]+)(\.{3})?/g,(function(e,t,n){return delete s[t],null==r[t]?e:n?r[t]:encodeURIComponent(String(r[t]))})),f=u.indexOf("?"),d=u.indexOf("#"),p=d<0?u.length:d,v=f<0?p:f,h=u.slice(0,v);o>=0&&(h+=n.slice(o,l)),f>=0&&(h+=(o<0?"?":"&")+u.slice(f,p));var m=e(s);return m&&(h+=(o<0&&f<0?"?":"&")+m),i>=0&&(h+=n.slice(i)),d>=0&&(h+=(i<0?"":"&")+u.slice(d)),h},R}var K,J,Z,V,W,Q,G,X,Y,ee,te,ne,re=H(),oe=s(),ie=function(e,t,n){var r=0;function o(e){return new t(e)}function i(e){return function(r,i){"string"!=typeof r?(i=r,r=r.url):null==i&&(i={});var l=new t((function(t,n){e(re(r,i.params),i,(function(e){if("function"==typeof i.type)if(Array.isArray(e))for(var n=0;n<e.length;n++)e[n]=new i.type(e[n]);else e=new i.type(e);t(e)}),n)}));if(!0===i.background)return l;var a=0;function c(){0==--a&&"function"==typeof n&&n()}return function e(t){var n=t.then;return t.constructor=o,t.then=function(){a++;var r=n.apply(t,arguments);return r.then(c,(function(e){if(c(),0===a)throw e})),e(r)},t}(l)}}function l(e,t){for(var n in e.headers)if(oe.call(e.headers,n)&&n.toLowerCase()===t)return!0;return!1}return o.prototype=t.prototype,o.__proto__=t,{request:i((function(t,n,r,o){var i,a=null!=n.method?n.method.toUpperCase():"GET",c=n.body,s=(null==n.serialize||n.serialize===JSON.serialize)&&!(c instanceof e.FormData||c instanceof e.URLSearchParams),u=n.responseType||("function"==typeof n.extract?"":"json"),f=new e.XMLHttpRequest,d=!1,p=!1,v=f,h=f.abort;for(var m in f.abort=function(){d=!0,h.call(this)},f.open(a,t,!1!==n.async,"string"==typeof n.user?n.user:void 0,"string"==typeof n.password?n.password:void 0),s&&null!=c&&!l(n,"content-type")&&f.setRequestHeader("Content-Type","application/json; charset=utf-8"),"function"==typeof n.deserialize||l(n,"accept")||f.setRequestHeader("Accept","application/json, text/*"),n.withCredentials&&(f.withCredentials=n.withCredentials),n.timeout&&(f.timeout=n.timeout),f.responseType=u,n.headers)oe.call(n.headers,m)&&f.setRequestHeader(m,n.headers[m]);f.onreadystatechange=function(e){if(!d&&4===e.target.readyState)try{var i,l=e.target.status>=200&&e.target.status<300||304===e.target.status||/^file:\/\//i.test(t),a=e.target.response;if("json"===u){if(!e.target.responseType&&"function"!=typeof n.extract)try{a=JSON.parse(e.target.responseText)}catch(e){a=null}}else u&&"text"!==u||null==a&&(a=e.target.responseText);if("function"==typeof n.extract?(a=n.extract(e.target,n),l=!0):"function"==typeof n.deserialize&&(a=n.deserialize(a)),l)r(a);else{var c=function(){try{i=e.target.responseText}catch(e){i=a}var t=new Error(i);t.code=e.target.status,t.response=a,o(t)};0===f.status?setTimeout((function(){p||c()})):c()}}catch(e){o(e)}},f.ontimeout=function(e){p=!0;var t=new Error("Request timed out");t.code=e.target.status,o(t)},"function"==typeof n.config&&(f=n.config(f,n,t)||f)!==v&&(i=f.abort,f.abort=function(){d=!0,i.call(this)}),null==c?f.send():"function"==typeof n.serialize?f.send(n.serialize(c)):c instanceof e.FormData||c instanceof e.URLSearchParams?f.send(c):f.send(JSON.stringify(c))})),jsonp:i((function(t,n,o,i){var l=n.callbackName||"_mithril_"+Math.round(1e16*Math.random())+"_"+r++,a=e.document.createElement("script");e[l]=function(t){delete e[l],a.parentNode.removeChild(a),o(t)},a.onerror=function(){delete e[l],a.parentNode.removeChild(a),i(new Error("JSONP request failed"))},a.src=t+(t.indexOf("?")<0?"?":"&")+encodeURIComponent(n.callbackKey||"callback")+"="+encodeURIComponent(l),e.document.documentElement.appendChild(a)}))}}("undefined"!=typeof window?window:null,O,_.redraw);function le(){if(J)return K;function e(e){try{return decodeURIComponent(e)}catch(t){return e}}return J=1,K=function(t){if(""===t||null==t)return{};"?"===t.charAt(0)&&(t=t.slice(1));for(var n=t.split("&"),r={},o={},i=0;i<n.length;i++){var l=n[i].split("="),a=e(l[0]),c=2===l.length?e(l[1]):"";"true"===c?c=!0:"false"===c&&(c=!1);var s=a.split(/\]\[?|\[/),u=o;a.indexOf("[")>-1&&s.pop();for(var f=0;f<s.length;f++){var d=s[f],p=s[f+1],v=""==p||!isNaN(parseInt(p,10));if(""===d)null==r[a=s.slice(0,f).join()]&&(r[a]=Array.isArray(u)?u.length:0),d=r[a]++;else if("__proto__"===d)break;if(f===s.length-1)u[d]=c;else{var h=Object.getOwnPropertyDescriptor(u,d);null!=h&&(h=h.value),null==h&&(u[d]=h=v?[]:{}),u=h}}}return o}}function ae(){if(V)return Z;V=1;var e=le();return Z=function(t){var n=t.indexOf("?"),r=t.indexOf("#"),o=r<0?t.length:r,i=n<0?o:n,l=t.slice(0,i).replace(/\/{2,}/g,"/");return l?("/"!==l[0]&&(l="/"+l),l.length>1&&"/"===l[l.length-1]&&(l=l.slice(0,-1))):l="/",{path:l,params:n<0?{}:e(t.slice(n+1,o))}}}function ce(){if(Q)return W;Q=1;var e=ae();return W=function(t){var n=e(t),r=Object.keys(n.params),o=[],i=new RegExp("^"+n.path.replace(/:([^\/.-]+)(\.{3}|\.(?!\.)|-)?|[\\^$*+.()|\[\]{}]/g,(function(e,t,n){return null==t?"\\"+e:(o.push({k:t,r:"..."===n}),"..."===n?"(.*)":"."===n?"([^/]+)\\.":"([^/]+)"+(n||""))}))+"$");return function(e){for(var t=0;t<r.length;t++)if(n.params[r[t]]!==e.params[r[t]])return!1;if(!o.length)return i.test(e.path);var l=i.exec(e.path);if(null==l)return!1;for(t=0;t<o.length;t++)e.params[o[t].k]=o[t].r?l[t+1]:decodeURIComponent(l[t+1]);return!0}},W}function se(){if(X)return G;X=1;var e=s(),t=new RegExp("^(?:key|oninit|oncreate|onbeforeupdate|onupdate|onbeforeremove|onremove)$");return G=function(n,r){var o={};if(null!=r)for(var i in n)e.call(n,i)&&!t.test(i)&&r.indexOf(i)<0&&(o[i]=n[i]);else for(var i in n)e.call(n,i)&&!t.test(i)&&(o[i]=n[i]);return o}}var ue=j,fe=ie,de=_,pe=function(){return ue.apply(this,arguments)};pe.m=ue,pe.trust=ue.trust,pe.fragment=ue.fragment,pe.Fragment="[",pe.mount=de.mount,pe.route=function(){if(ne)return te;ne=1;var e=_;return te=function(){if(ee)return Y;ee=1;var e=o(),t=m,n=O,r=H(),i=ae(),l=ce(),a=B(),c=se(),s={};function u(e){try{return decodeURIComponent(e)}catch(t){return e}}return Y=function(o,f){var d,p,v,h,m,g,y=null==o?null:"function"==typeof o.setImmediate?o.setImmediate:o.setTimeout,w=n.resolve(),b=!1,x=!1,k=0,j=s,L={onbeforeupdate:function(){return!(!(k=k?2:1)||s===j)},onremove:function(){o.removeEventListener("popstate",A,!1),o.removeEventListener("hashchange",C,!1)},view:function(){if(k&&s!==j){var t=[e(v,h.key,h)];return j&&(t=j.render(t[0])),t}}},S=z.SKIP={};function C(){b=!1;var e=o.location.hash;"#"!==z.prefix[0]&&(e=o.location.search+e,"?"!==z.prefix[0]&&"/"!==(e=o.location.pathname+e)[0]&&(e="/"+e));var t=e.concat().replace(/(?:%[a-f89][a-f0-9])+/gim,u).slice(z.prefix.length),n=i(t);function r(e){console.error(e),E(p,null,{replace:!0})}a(n.params,o.history.state),function e(o){for(;o<d.length;o++)if(d[o].check(n)){var i=d[o].component,l=d[o].route,a=i,c=g=function(r){if(c===g){if(r===S)return e(o+1);v=null==r||"function"!=typeof r.view&&"function"!=typeof r?"div":r,h=n.params,m=t,g=null,j=i.render?i:null,2===k?f.redraw():(k=2,f.redraw.sync())}};return void(i.view||"function"==typeof i?(i={},c(a)):i.onmatch?w.then((function(){return i.onmatch(n.params,t,l)})).then(c,t===p?null:r):c("div"))}if(t===p)throw new Error("Could not resolve default route "+p+".");E(p,null,{replace:!0})}(0)}function A(){b||(b=!0,y(C))}function E(e,t,n){if(e=r(e,t),x){A();var i=n?n.state:null,l=n?n.title:null;n&&n.replace?o.history.replaceState(i,l,z.prefix+e):o.history.pushState(i,l,z.prefix+e)}else o.location.href=z.prefix+e}function z(e,t,n){if(!e)throw new TypeError("DOM element being rendered to does not exist.");if(d=Object.keys(n).map((function(e){if("/"!==e[0])throw new SyntaxError("Routes must start with a '/'.");if(/:([^\/\.-]+)(\.{3})?:/.test(e))throw new SyntaxError("Route parameter names must be separated with either '/', '.', or '-'.");return{route:e,component:n[e],check:l(e)}})),p=t,null!=t){var r=i(t);if(!d.some((function(e){return e.check(r)})))throw new ReferenceError("Default route doesn't match any known routes.")}"function"==typeof o.history.pushState?o.addEventListener("popstate",A,!1):"#"===z.prefix[0]&&o.addEventListener("hashchange",C,!1),x=!0,f.mount(e,L),C()}return z.set=function(e,t,n){null!=g&&((n=n||{}).replace=!0),g=null,E(e,t,n)},z.get=function(){return m},z.prefix="#!",z.Link={view:function(e){var n,o,i,l=t(e.attrs.selector||"a",c(e.attrs,["options","params","selector","onclick"]),e.children);return(l.attrs.disabled=Boolean(l.attrs.disabled))?(l.attrs.href=null,l.attrs["aria-disabled"]="true"):(n=e.attrs.options,o=e.attrs.onclick,i=r(l.attrs.href,e.attrs.params),l.attrs.href=z.prefix+i,l.attrs.onclick=function(e){var t;"function"==typeof o?t=o.call(e.currentTarget,e):null==o||"object"!=typeof o||"function"==typeof o.handleEvent&&o.handleEvent(e),!1===t||e.defaultPrevented||0!==e.button&&0!==e.which&&1!==e.which||e.currentTarget.target&&"_self"!==e.currentTarget.target||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||(e.preventDefault(),e.redraw=!1,z.set(i,null,n))}),l}},z.param=function(e){return h&&null!=e?h[e]:h},z},Y}()("undefined"!=typeof window?window:null,e),te}(),pe.render=N(),pe.redraw=de.redraw,pe.request=fe.request,pe.jsonp=fe.jsonp,pe.parseQueryString=le(),pe.buildQueryString=q(),pe.parsePathname=ae(),pe.buildPathname=H(),pe.vnode=o(),pe.PromisePolyfill=S(),pe.censor=se();var ve=r(pe);var he={req:function(e,t,n){return ve.request({method:e,url:t,opts:n})},get:function(e,t){return he.req("get",e,t)},post:function(e,t){return he.req("post",e,t)},put:function(e,t){return he.req("put",e,t)},del:function(e,t){return he.req("del",e,t)}};var me={view:function(e){var t=e.children,n=e.attrs.A;return ve(".layout",{class:"relative w-screen h-screen"},ve("div",{class:"container mx-auto bg-sky-300"},ve("div",{class:"text-center py-4"},ve("h1",{class:"text-3xl font-bold tracking-widest"},"Timez")),ve("div",{class:"bg-sky-950"},ve("ul",{class:"flex justify-start items-center gap-14 ml-14 pt-3 pb-3.5 list-none"},ve("li",{class:"inline-block text-white cursor-pointer select-none"},ve("a",{onclick:function(){n.initChecks(),ve.route.set("/times")}},"Times")),ve("li",{class:"inline-block text-white cursor-pointer select-none"},ve("a",{onclick:function(){return ve.route.set("/invoices")}},"Invoices")),ve("li",{class:"inline-block text-white cursor-pointer select-none"},ve("a",{onclick:function(){return ve.route.set("/config")}},"Config")))),ve("div",{class:"bg-stone-100"},t)))}},ge={edit:ve("svg",{width:"26",height:"36",viewBox:"0 0 18 18",fill:"#0284c7",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"M14.4714 4.86192C14.7317 5.12227 14.7317 5.54438 14.4714 5.80473L5.80472 14.4714C5.67969 14.5964 5.51013 14.6667 5.33331 14.6667L2.66665 14.6667C2.48983 14.6667 2.32026 14.5964 2.19524 14.4714C2.07022 14.3464 1.99998 14.1768 1.99998 14L1.99998 11.3333C1.99998 11.1565 2.07022 10.9869 2.19524 10.8619L10.8619 2.19525C11.1223 1.9349 11.5444 1.9349 11.8047 2.19525C12.0651 2.4556 12.0651 2.87771 11.8047 3.13806L3.33331 11.6095L3.33331 13.3333L5.05717 13.3333L13.5286 4.86192C13.7889 4.60157 14.211 4.60157 14.4714 4.86192Z"}),ve("path",{d:"M10.8619 2.19525C11.1223 1.9349 11.5444 1.9349 11.8047 2.19525L14.4714 4.86192C14.7317 5.12227 14.7317 5.54438 14.4714 5.80473C14.211 6.06508 13.7889 6.06508 13.5286 5.80473L10.8619 3.13806C10.6016 2.87771 10.6016 2.4556 10.8619 2.19525Z"}),ve("path",{d:"M11.5286 7.80473L8.86194 5.13806L9.80475 4.19525L12.4714 6.86192L11.5286 7.80473Z"})),copy:ve("svg",{width:"36",height:"36",viewBox:"0 0 100 100",fill:"none",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"M66.4,71.1h-30c-1.7,0-3-1.3-3-3v-34c0-1.7,1.3-3,3-3h30c1.7,0,3,1.3,3,3v34C69.4,69.7,68,71.1,66.4,71.1z M37.4,67.1h28  v-32h-28V67.1z",fill:"#000"}),ve("path",{d:"M73.4,64.1c-1.1,0-2-0.9-2-2v-33h-29c-1.1,0-2-0.9-2-2s0.9-2,2-2h29.6c1.6,0,3.4,1.2,3.4,3v34  C75.4,63.2,74.5,64.1,73.4,64.1z M71.9,29.1L71.9,29.1L71.9,29.1z",fill:"#000"})),pdf:ve("svg",{width:"22",height:"22",viewBox:"0 0 1000 1000",fill:"none",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"M988.6,636c-1.1-8.1-7.5-18-14.4-24.8l-0.1,0c-19.6-19.3-63-29.6-129.1-30.4c-44.7-0.5-98.6,3.5-155.3,11.4c-25.4-14.7-51.5-30.5-72-49.7c-55.2-51.5-101.3-123.1-130-201.8c1.9-7.3,3.4-13.8,5-20.4c0,0,31.1-176.6,22.9-236.4c-1.1-8.2-1.8-10.6-4-17l-2.7-6.9c-8.5-19.5-25-40.2-51.1-39L442,20.5c-29,0-52.7,14.8-58.9,37C364.3,127,383.8,231,419,365.7l-9,21.9c-25.3,61.6-56.9,123.5-84.8,178.3l-3.6,7.1c-29.4,57.5-56,106.2-80.1,147.6l-24.9,13.2c-1.8,1-44.5,23.6-54.6,29.6c-85,50.8-141.4,108.5-150.7,154.2c-3,14.6-0.8,33.3,14.4,41.9l24.1,12.2c10.5,5.2,21.5,7.9,32.8,7.9c60.6,0,130.9-75.5,227.8-244.6c111.8-36.4,239.2-66.7,350.8-83.4c85,47.9,189.7,81.2,255.7,81.2c11.7,0,21.8-1.1,30-3.3c12.7-3.4,23.3-10.6,29.9-20.4C989.5,689.8,992.1,663.2,988.6,636z M69.2,933.6c11.1-30.2,54.8-90,119.5-142.9c4-3.3,14-12.7,23.3-21.4C144.3,877.2,99,920.1,69.2,933.6z M452.2,51.7c19.5,0,30.6,49.1,31.5,95.1c0.9,46-9.8,78.3-23.2,102.2c-11.1-35.4-16.4-91.2-16.4-127.6C444.1,121.4,443.2,51.7,452.2,51.7z M338,680.2L338,680.2c13.5-24.3,27.7-49.9,42.1-77c35.1-66.5,57.4-118.5,73.9-161.3c32.9,59.9,73.8,110.7,122,151.5c6,5.1,12.3,10.2,19,15.3C497.1,628,412.5,651.6,338,680.2z M955.2,674.7L955.2,674.7c-5.9,3.7-23,5.8-34,5.8c-35.4,0-79.3-16.2-140.8-42.6c23.7-1.7,45.3-2.7,64.7-2.7c35.6,0,46.1-0.1,80.9,8.8C960.8,652.9,961.2,670.9,955.2,674.7z",fill:"#ff0000"})),eye:ve("svg",{width:"28",height:"28",viewBox:"0 0 512 512",fill:"none",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"m494.8,241.4l-50.6-49.4c-50.1-48.9-116.9-75.8-188.2-75.8s-138.1,26.9-188.2,75.8l-50.6,49.4c-11.3,12.3-4.3,25.4 0,29.2l50.6,49.4c50.1,48.9 116.9,75.8 188.2,75.8s138.1-26.9 188.2-75.8l50.6-49.4c4-3.8 11.7-16.4 0-29.2zm-238.8,84.4c-38.5,0-69.8-31.3-69.8-69.8 0-38.5 31.3-69.8 69.8-69.8 38.5,0 69.8,31.3 69.8,69.8 0,38.5-31.3,69.8-69.8,69.8zm-195.3-69.8l35.7-34.8c27-26.4 59.8-45.2 95.7-55.4-28.2,20.1-46.6,53-46.6,90.1 0,37.1 18.4,70.1 46.6,90.1-35.9-10.2-68.7-29-95.7-55.3l-35.7-34.7zm355,34.8c-27,26.3-59.8,45.1-95.7,55.3 28.2-20.1 46.6-53 46.6-90.1 0-37.2-18.4-70.1-46.6-90.1 35.9,10.2 68.7,29 95.7,55.4l35.6,34.8-35.6,34.7z",fill:"#000"})),crossred:ve("svg",{width:"32",height:"32",viewBox:"0 0 19 19",fill:"none",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"M9.49996 8.38058L13.4187 4.46183L14.5381 5.58125L10.6194 9.5L14.5381 13.4188L13.4187 14.5382L9.49996 10.6194L5.58121 14.5382L4.46179 13.4188L8.38054 9.5L4.46179 5.58125L5.58121 4.46183L9.49996 8.38058Z",fill:"#EB5757"})),crossredsm:ve("svg",{width:"32",height:"32",viewBox:"0 0 23 23",fill:"none",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"M9.49996 8.38058L13.4187 4.46183L14.5381 5.58125L10.6194 9.5L14.5381 13.4188L13.4187 14.5382L9.49996 10.6194L5.58121 14.5382L4.46179 13.4188L8.38054 9.5L4.46179 5.58125L5.58121 4.46183L9.49996 8.38058Z",fill:"#EB5757"})),check:ve("svg",{width:"32",height:"32",viewBox:"0 0 23 23",fill:"none",xmlns:"http://www.w3.org/2000/svg"},ve("path",{d:"M7.54058 13.9785L3.62183 10.0597L4.74124 8.94029L7.54176 11.7376L7.54058 11.7388L14.2579 5.02154L15.3773 6.14096L8.65999 12.859L7.54137 13.9777L7.54058 13.9785Z",fill:"#219653"}))};function ye(e){var t=e.attrs,n=t.S,r=t.A;n.loaded||r.init().then(r.initChecks);var o={USD:"$",EUR:"€"},i=function(e,t){var r=n.projects.find((function(t){return t.id===e}));return r?r[t]:""},l=function(){var e=Object.entries(n.checks).sort((function(e,t){return+e[0]>+t[0]?1:-1})).reduce((function(e,t){var n=t[0];return t[1]&&e.push(+n),e}),[]),t=n.times.find((function(t){return t.id===e[0]})).id,o=n.times.filter((function(t){var n=t.id;return e.includes(n)})).reduce((function(e,t){return e+=t.total}),0);r.post("invoices",{date:new Date(Date.now()).toJSON().split("T")[0],projid:t,total:o,times:e.join(",")}).then((function(){})).catch(console.log)};return{onbeforeupdate:function(){n.loaded||r.init().then(r.initChecks)},view:function(){return ve("div",{class:"p-4"},ve("div",{class:"flex"},ve("h2",{class:"text-2xl font-bold mb-3"},"Times"),ve("button",{class:n.classes.plus,onclick:function(){n.time={},ve.route.set("/time")}},"+")),ve("div",{class:"mb-3"},ve("button",{class:"mr-3 "+n.classes.button,onclick:function(){return ve.route.set("/json")}},"Copy Json"),ve("button",{class:n.classes.button,onclick:l},"Create Invoice")),ve("div",n.times.length>0?ve("table",ve("thead",ve("tr",["","date","project","hours","price","total","description",""].map((function(e){return ve("th",{class:"text-left px-3"},e)})))),ve("tbody",n.times.map((function(e){return ve("tr",{class:"hover:bg-slate-50"},ve("td",ve("input",{type:"checkbox",checked:n.checks[e.id],onchange:function(){return n.checks[e.id]=!n.checks[e.id]}})),["date","projname","hours","price","total","description"].map((function(t){return ve("td",{class:"px-3"},"projname"===t?i(e.projid,"name"):"total"===t?o[i(e.projid,"currency")]+(Math.round(e.hours*e.price*100)/100).toFixed(2):e[t])})),ve("td",{class:"flex"},ve("span",{class:"cursor-pointer",title:"edit",onclick:function(){n.time=e,ve.route.set("/time")}},ge.edit),ve("span",{class:"cursor-pointer",title:"copy",onclick:function(){e.id;var t=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&-1===t.indexOf(r)&&(n[r]=e[r]);return n}(e,["id"]);r.post("times",t)}},ge.copy),ve("span",{class:"cursor-pointer mt-0.5",onclick:function(){confirm("Are you sure you wish to delete this time entry?")&&r.del("times",e.id)}},ge.crossred)))})))):ve("h5",{class:"text-lg font-bold"},"No time entries found")))}}}function we(e){var t=e.attrs,n=t.S,r=t.A;n.loaded||r.init();var o=n.time.id?"put":"post",i="post"===o?"Create":"Edit",l=function(){if("post"===o)r.post("times",n.time).then((function(){return ve.route.set("/times")})).catch(console.log);else{var e=n.time,t=e.id,i=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&-1===t.indexOf(r)&&(n[r]=e[r]);return n}(e,["id"]);r.put("times",t,i).then((function(){return ve.route.set("/times")})).catch(console.log)}};return{onbeforeupdate:function(){n.loaded||r.init()},view:function(){return ve("div",{class:"p-4"},ve("h2",{class:"text-2xl font-bold mb-3"},`${i} time entry`),ve("form",{class:"flex flex-col gap-[20px]"},ve("div",{class:"flex"},ve("label",{class:"w-[100px] capitalize"},"Date"),ve("input",{type:"date",class:"px-2",value:n.time.date,onchange:function(e){return n.time.date=e.target.value}})),["description","hours","price","code"].map((function(e){return ve("div",{class:"flex"},ve("label",{class:"w-[100px] capitalize"},e),ve("input",{class:"px-2",value:n.time[e],onchange:function(t){return n.time[e]="hours"===e||"price"===e?+t.target.value:t.target.value}}))})),[{code:"projid",name:"Project",arr:"projects"},{code:"compid",name:"Company",arr:"companies"}].map((function(e){return ve("div",{class:"flex"},ve("label",{class:"w-[100px] capitalize"},e.name),ve("select",{name:e.code,style:"padding: 0 8px",value:n.time[e.code],onchange:function(t){return n.time[e.code]=+t.target.value}},n[e.arr].map((function(e){return ve("option",{value:e.id},e.name)}))))}))),ve("button",{class:"w-[120px] mt-5 "+n.classes.button,onclick:function(){return l()}},"Save"))}}}function be(e){var t=e.attrs.S;return{view:function(){return ve("div",{class:"p-4"},ve("div",{class:"mb-3"},ve("button",{class:t.classes.button,onclick:function(){navigator.clipboard.writeText(document.getElementById("json").innerHTML)}},"Copy to Clipboard")),ve("pre#json",JSON.stringify(t.times.filter((function(e){return t.checks[e.id]})).reduce((function(e,t){return e.push({project:t.code,who:"Oscar Bannink",comment:t.description,hr:t.hours,date:t.date}),e}),[]).sort((function(e,t){return e.date>t.date?1:-1})),null,2)))}}}var xe=function(){var e={savHTML:"save HTML",makePDF:"make PDF",movePDF:"move PDF",delHTML:"delete HTML"};return{view:function(t){var n=t.attrs,r=n.res,o=n.cls,i=n.click;return ve("div",{class:"fixed top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-black opacity-80"},ve("div",{class:"text-center mb-2.5 p-5 w-52 h-52 bg-white"},["savHTML","makePDF","movePDF","delHTML"].map((function(t){return ve("div",{class:"flex"},ve("span",{class:"w-24 ml-4 mr-1 text-left"},e[t]),ve("span",r[t]?ge.crossredsm:ge.check))})),ve("div",{class:"mt-2"},ve("button",{class:o,onclick:i},"OK"))))}}};function ke(e){var t=e.attrs,n=t.S,r=t.A;n.loaded||r.init();var o={USD:"$",EUR:"€"},i=function(e,t){var r=n.projects.find((function(t){return t.id===e}));return r?r[t]:""},l=null;return{onbeforeupdate:function(){n.loaded||r.init()},view:function(){return ve("div",{class:"p-4"},ve("h2",{class:"text-2xl font-bold mb-2"},"Invoices"),ve("div",n.invoices.length>0?ve("table",ve("thead",ve("tr",["date","project","total",""].map((function(e){return ve("th",{class:"text-left px-3"},e)})))),ve("tbody",n.invoices.map((function(e){return ve("tr",ve("td",{class:"px-3"},e.date),ve("td",{class:"px-3"},i(e.projid,"name")),ve("td",{class:"px-3"},o[i(e.projid,"currency")]+e.total),ve("td",{class:"flex"},ve("span",{class:"cursor-pointer mr-1.5 mt-1",title:"pdf",onclick:function(){n.invo=e,function(){var e=n.projects.find((function(e){return e.id===n.invo.projid})),t=n.invo.times.split(",").map(Number),o=n.times.filter((function(e){var n=e.id;return t.includes(n)})).reverse(),i=n.companies.find((function(e){return e.id===o[0].compid}));r.post("pdf",{invo:n.invo,comp:i,proj:e,times:o}).then((function(e){return l=e})).catch(console.log)}()}},ge.pdf),ve("span",{class:"cursor-pointer mt-0.5",title:"preview",onclick:function(){n.invo=e,ve.route.set("/preview")}},ge.eye),ve("span",{class:"cursor-pointer",onclick:function(){confirm(`Are you sure you wish to delete ${e.name}?`)&&r.del("invoices",e.id)}},ge.crossred)))})))):ve("h5",{class:"text-lg font-bold"},"No invoices found")),l&&ve(xe,{res:l,cls:n.classes.button,click:function(){return l=null}}))}}}function je(e){var t=e.attrs,n=t.S,r=t.A;return n.loaded||r.init(),{onbeforeupdate:function(){n.loaded||r.init()},view:function(){return ve("div",{class:"p-4"},ve("div",{class:"flex mb-2"},ve("h2",{class:"text-2xl font-bold"},"Companies"),ve("button",{class:n.classes.plus,onclick:function(){n.comp={},ve.route.set("/company")}},"+")),ve("div",n.companies.length>0?ve("table",ve("tbody",n.companies.map((function(e){return ve("tr",ve("td",{class:"px-3"},e.name),ve("td",{class:"flex"},ve("span",{class:"cursor-pointer",title:"edit",onclick:function(){n.comp=e,ve.route.set("/company")}},ge.edit),ve("span",{class:"cursor-pointer mt-0.5",onclick:function(){confirm(`Are you sure you wish to delete ${e.name}?`)&&r.del("companies",e.id)}},ge.crossred)))})))):ve("h5",{class:"text-lg font-bold"},"No company found")),ve("div",{class:"flex mt-8 mb-2"},ve("h2",{class:"text-2xl font-bold"},"Projects"),ve("button",{class:n.classes.plus,onclick:function(){n.comp={},ve.route.set("/project")}},"+")),ve("div",n.projects.length>0?ve("table",ve("tbody",n.projects.map((function(e){return ve("tr",ve("td",{class:"px-3"},e.name),ve("td",{class:"flex"},ve("span",{class:"cursor-pointer",title:"edit",onclick:function(){n.proj=e,ve.route.set("/project")}},ge.edit),ve("span",{class:"cursor-pointer mt-0.5",onclick:function(){confirm(`Are you sure you wish to delete ${e.name}?`)&&r.del("projects",e.id)}},ge.crossred)))})))):ve("h5",{class:"text-lg font-bold"},"No projects found")))}}}function Le(e){var t=e.attrs,n=t.S,r=t.A;n.loaded||r.init();var o=n.comp.id?"put":"post",i="post"===o?"Create":"Edit",l=function(){if("post"===o)r.post("companies",n.comp).then((function(){return ve.route.set("/config")})).catch(console.log);else{var e=n.comp,t=e.id,i=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&-1===t.indexOf(r)&&(n[r]=e[r]);return n}(e,["id"]);r.put("companies",t,i).then((function(){return ve.route.set("/config")})).catch(console.log)}};return{onbeforeupdate:function(){n.loaded||r.init()},view:function(){return ve("div",{class:"p-4"},ve("h2",{class:"text-2xl font-bold mb-3"},`${i} company`),ve("form",{class:"flex flex-col gap-[20px]"},["name","address","city","country","coc","vat"].map((function(e){return ve("div",{class:"flex"},ve("label",{class:"w-[100px] capitalize"},"coc"===e?"CoC/KvK":"vat"===e?"VAT/BTW":e),ve("input",{class:"px-2",value:n.comp[e],onchange:function(t){return n.comp[e]=t.target.value}}))}))),ve("button",{class:"w-[120px] mt-5 "+n.classes.button,onclick:function(){return l()}},"Save"))}}}function Se(e){var t=e.attrs,n=t.S,r=t.A;n.loaded||r.init();var o=n.proj.id?"put":"post",i="post"===o?"Create":"Edit",l=function(){if("post"===o)r.post("projects",n.proj).then((function(){return ve.route.set("/config")})).catch(console.log);else{var e=n.proj,t=e.id,i=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&-1===t.indexOf(r)&&(n[r]=e[r]);return n}(e,["id"]);r.put("projects",t,i).then((function(){return ve.route.set("/config")})).catch(console.log)}};return{onbeforeupdate:function(){n.loaded||r.init()},view:function(){return ve("div",{class:"p-4"},ve("h2",{class:"text-2xl font-bold mb-3"},`${i} project`),ve("form",{class:"flex flex-col gap-[20px]"},["name","address","city","country","bank","currency","tax","language"].map((function(e){return ve("div",{class:"flex"},ve("label",{class:"w-[100px] capitalize"},e),"currency"===e?ve("select",{style:"padding: 0 8px",value:n.proj[e],onchange:function(t){return n.proj[e]=t.target.value}},["USD","EUR"].map((function(e){return ve("option",{value:e},e)}))):"language"===e?ve("select",{style:"padding: 0 8px",value:n.proj[e],onchange:function(t){return n.proj[e]=t.target.value}},Object.entries({EN:"English",NL:"Nederlands"}).map((function(e){var t=e[0],n=e[1];return ve("option",{value:t},n)}))):ve("input",{class:"px-2",value:n.proj[e],onchange:function(t){return n.proj[e]="tax"===e?+t.target.value:t.target.value}}))}))),ve("button",{class:"w-[120px] mt-5 "+n.classes.button,onclick:function(){return l()}},"Save"))}}}var Ce=function(e,t){return{title:["Invoice","Factuur"],coc:["CoC: ","KvK: "],vat:["VAT: ","BTW: "],nr:["Invoice number: ","Factuurnummer: "],date:["Date","Datum"],description:["Description","Omschrijving"],price:["Price","Prijs"],hours:["Hours","Uren"],total:["Total","Totaal"],sub:["Subtotal","Subtotaal"],tax:["Tax ","BTW "]}[e][t]};function Ae(e){var t=e.attrs.S,n=t.projects.find((function(e){return e.id===t.invo.projid})),r=t.invo.times.split(",").map(Number),o=t.times.filter((function(e){var t=e.id;return r.includes(t)})).reverse(),i=t.companies.find((function(e){return e.id===o[0].compid})),l="EN"===n.language?0:1,a={USD:"$",EUR:"€"},c=function(e,t){return Math.round(e/100*t*100)/100};return{view:function(){return ve("div",{style:"position:relative; width:100vw; height:100vh"},ve("div",{style:"width:970px; margin:0 auto; padding:20px"},ve("div",{style:"display:flex; justify-content:space-between; align-items:center"},ve("div",{style:"font-size: 2.25rem"},Ce("title",l)),ve("div",{style:"margin-top:9px; font-size: 1rem; font-style:italic"},t.invo.date)),ve("hr",{style:"border-top:1px solid black"}),ve("div",{style:"display:flex; justify-content:space-between; margin-top:20px"},ve("div",ve("div",{style:"font-weight:bold"},n.name),ve("div",n.address),ve("div",n.city),ve("div",n.country)),ve("div",{style:"margin-right:20px"},ve("div",{style:"font-weight:bold"},i.name),ve("div",i.address),ve("div",i.city),ve("div",i.country),ve("div",{style:"margin-top:3px"},Ce("coc",l)+i.coc),ve("div",Ce("vat",l)+i.vat),ve("div",`Bank: ${n.bank}`))),ve("div",{style:"margin-top:90px"},Ce("nr",l)+t.invo.date.replaceAll("-","").slice(2)),ve("div",{style:"margin-top:60px"},ve("table",{style:"width:100%; text-align:left; font-size:18px"},ve("thead",["date","description","price","hours","total"].map((function(e){return ve("th",Ce(e,l))}))),ve("tbody",o.map((function(e){return ve("tr",{style:"height:28px"},ve("td",{style:"width:120px"},e.date),ve("td",e.description),ve("td",a[n.currency]+e.price.toFixed(2)),ve("td",e.hours.toFixed(1)),ve("td",{style:"width:100px"},a[n.currency]+e.total.toFixed(2)))})),ve("tr",ve("td",{colspan:4}),ve("td",ve("hr",{style:"border-top:1px solid black"}))),ve("tr",ve("td",{colspan:3}),ve("td",{style:"padding-top:8px"},Ce("sub",l)),ve("td",a[n.currency]+t.invo.total.toFixed(2))),ve("tr",ve("td",{colspan:3}),ve("td",{style:"padding-top:5px"},`${Ce("tax",l)} (${n.tax}%)`),ve("td",a[n.currency]+c(n.tax,t.invo.total).toFixed(2))),ve("tr",{style:"font-weight:bold"},ve("td",{colspan:3}),ve("td",{style:"padding-top:5px; font-size:18px; font-weight:bold"},Ce("total",l)),ve("td",a[n.currency]+(t.invo.total+c(n.tax,t.invo.total)).toFixed(2))))))))}}}var Ee={companies:[],comp:{},projects:[],proj:{},times:[],time:{},checks:{},invoices:[],invo:{},classes:{button:"px-3.5 pt-0.5 pb-1 bg-sky-600 text-white rounded-md",plus:"flex justify-center items-end w-[30px] h-[30px] p-0 mt-1 ml-2.5 bg-sky-600 text-white rounded-md text-3xl"},loaded:!1},ze=function(e,t){return void 0===t&&(t={init:function(){return e.loaded=!1,Promise.all([t.get("times"),t.get("companies"),t.get("projects"),t.get("invoices")]).then((function(){return e.loaded=!0})).catch(console.log)},initChecks:function(){return e.checks=e.times.reduce((function(e,t){return e[t.id]=!1,e}),{})},get:function(t){return he.get(`/api/${t}`).then((function(n){return e[t]=n})).catch(console.log)},post:function(t,n){return he.post(`/api/${t}`,{body:n}).then((function(r){if("pdf"===t)return r;e[t].unshift(Object.assign({},{id:r.id},n))})).catch(console.log)},put:function(t,n,r){return he.put(`/api/${t}/${n}`,{body:r}).then((function(){var o=e[t].findIndex((function(e){return e.id===n}));e[t][o]=r})).catch(console.log)},del:function(t,n){return he.del(`/api/${t}/${n}`,{method:"DELETE"}).then((function(){e[t]=e[t].filter((function(e){return e.id!==n}))})).catch(console.log)}}),t}(Ee),Te={"/":{render:function(){return ve(me,{A:ze},ve(ye,{S:Ee,A:ze}))}},"/times":{render:function(){return ve(me,{A:ze},ve(ye,{S:Ee,A:ze}))}},"/time":{render:function(){return ve(me,{A:ze},ve(we,{S:Ee,A:ze}))}},"/json":{render:function(){return ve(me,{A:ze},ve(be,{S:Ee}))}},"/invoices":{render:function(){return ve(me,{A:ze},ve(ke,{S:Ee,A:ze}))}},"/config":{render:function(){return ve(me,{A:ze},ve(je,{S:Ee,A:ze}))}},"/company":{render:function(){return ve(me,{A:ze},ve(Le,{S:Ee,A:ze}))}},"/project":{render:function(){return ve(me,{A:ze},ve(Se,{S:Ee,A:ze}))}},"/preview":{render:function(){return ve(Ae,{S:Ee})}}};ve.route(document.body,"/",Te)}();
+(function () {
+	'use strict';
+
+	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+	function getDefaultExportFromCjs (x) {
+		return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	}
+
+	var vnode;
+	var hasRequiredVnode;
+
+	function requireVnode () {
+		if (hasRequiredVnode) { return vnode; }
+		hasRequiredVnode = 1;
+
+		function Vnode(tag, key, attrs, children, text, dom) {
+			return {tag: tag, key: key, attrs: attrs, children: children, text: text, dom: dom, domSize: undefined, state: undefined, events: undefined, instance: undefined}
+		}
+		Vnode.normalize = function(node) {
+			if (Array.isArray(node)) { return Vnode("[", undefined, undefined, Vnode.normalizeChildren(node), undefined, undefined) }
+			if (node == null || typeof node === "boolean") { return null }
+			if (typeof node === "object") { return node }
+			return Vnode("#", undefined, undefined, String(node), undefined, undefined)
+		};
+		Vnode.normalizeChildren = function(input) {
+			var children = [];
+			if (input.length) {
+				var isKeyed = input[0] != null && input[0].key != null;
+				// Note: this is a *very* perf-sensitive check.
+				// Fun fact: merging the loop like this is somehow faster than splitting
+				// it, noticeably so.
+				for (var i = 1; i < input.length; i++) {
+					if ((input[i] != null && input[i].key != null) !== isKeyed) {
+						throw new TypeError(
+							isKeyed && (input[i] != null || typeof input[i] === "boolean")
+								? "In fragments, vnodes must either all have keys or none have keys. You may wish to consider using an explicit keyed empty fragment, m.fragment({key: ...}), instead of a hole."
+								: "In fragments, vnodes must either all have keys or none have keys."
+						)
+					}
+				}
+				for (var i = 0; i < input.length; i++) {
+					children[i] = Vnode.normalize(input[i]);
+				}
+			}
+			return children
+		};
+
+		vnode = Vnode;
+		return vnode;
+	}
+
+	var hyperscriptVnode;
+	var hasRequiredHyperscriptVnode;
+
+	function requireHyperscriptVnode () {
+		if (hasRequiredHyperscriptVnode) { return hyperscriptVnode; }
+		hasRequiredHyperscriptVnode = 1;
+
+		var Vnode = requireVnode();
+
+		// Call via `hyperscriptVnode.apply(startOffset, arguments)`
+		//
+		// The reason I do it this way, forwarding the arguments and passing the start
+		// offset in `this`, is so I don't have to create a temporary array in a
+		// performance-critical path.
+		//
+		// In native ES6, I'd instead add a final `...args` parameter to the
+		// `hyperscript` and `fragment` factories and define this as
+		// `hyperscriptVnode(...args)`, since modern engines do optimize that away. But
+		// ES5 (what Mithril.js requires thanks to IE support) doesn't give me that luxury,
+		// and engines aren't nearly intelligent enough to do either of these:
+		//
+		// 1. Elide the allocation for `[].slice.call(arguments, 1)` when it's passed to
+		//    another function only to be indexed.
+		// 2. Elide an `arguments` allocation when it's passed to any function other
+		//    than `Function.prototype.apply` or `Reflect.apply`.
+		//
+		// In ES6, it'd probably look closer to this (I'd need to profile it, though):
+		// module.exports = function(attrs, ...children) {
+		//     if (attrs == null || typeof attrs === "object" && attrs.tag == null && !Array.isArray(attrs)) {
+		//         if (children.length === 1 && Array.isArray(children[0])) children = children[0]
+		//     } else {
+		//         children = children.length === 0 && Array.isArray(attrs) ? attrs : [attrs, ...children]
+		//         attrs = undefined
+		//     }
+		//
+		//     if (attrs == null) attrs = {}
+		//     return Vnode("", attrs.key, attrs, children)
+		// }
+		hyperscriptVnode = function() {
+			var arguments$1 = arguments;
+
+			var attrs = arguments[this], start = this + 1, children;
+
+			if (attrs == null) {
+				attrs = {};
+			} else if (typeof attrs !== "object" || attrs.tag != null || Array.isArray(attrs)) {
+				attrs = {};
+				start = this;
+			}
+
+			if (arguments.length === start + 1) {
+				children = arguments[start];
+				if (!Array.isArray(children)) { children = [children]; }
+			} else {
+				children = [];
+				while (start < arguments.length) { children.push(arguments$1[start++]); }
+			}
+
+			return Vnode("", attrs.key, attrs, children)
+		};
+		return hyperscriptVnode;
+	}
+
+	var hasOwn;
+	var hasRequiredHasOwn;
+
+	function requireHasOwn () {
+		if (hasRequiredHasOwn) { return hasOwn; }
+		hasRequiredHasOwn = 1;
+
+		hasOwn = {}.hasOwnProperty;
+		return hasOwn;
+	}
+
+	var hyperscript_1$1;
+	var hasRequiredHyperscript$1;
+
+	function requireHyperscript$1 () {
+		if (hasRequiredHyperscript$1) { return hyperscript_1$1; }
+		hasRequiredHyperscript$1 = 1;
+
+		var Vnode = requireVnode();
+		var hyperscriptVnode = requireHyperscriptVnode();
+		var hasOwn = requireHasOwn();
+
+		var selectorParser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[(.+?)(?:\s*=\s*("|'|)((?:\\["'\]]|.)*?)\5)?\])/g;
+		var selectorCache = {};
+
+		function isEmpty(object) {
+			for (var key in object) { if (hasOwn.call(object, key)) { return false } }
+			return true
+		}
+
+		function compileSelector(selector) {
+			var match, tag = "div", classes = [], attrs = {};
+			while (match = selectorParser.exec(selector)) {
+				var type = match[1], value = match[2];
+				if (type === "" && value !== "") { tag = value; }
+				else if (type === "#") { attrs.id = value; }
+				else if (type === ".") { classes.push(value); }
+				else if (match[3][0] === "[") {
+					var attrValue = match[6];
+					if (attrValue) { attrValue = attrValue.replace(/\\(["'])/g, "$1").replace(/\\\\/g, "\\"); }
+					if (match[4] === "class") { classes.push(attrValue); }
+					else { attrs[match[4]] = attrValue === "" ? attrValue : attrValue || true; }
+				}
+			}
+			if (classes.length > 0) { attrs.className = classes.join(" "); }
+			return selectorCache[selector] = {tag: tag, attrs: attrs}
+		}
+
+		function execSelector(state, vnode) {
+			var attrs = vnode.attrs;
+			var hasClass = hasOwn.call(attrs, "class");
+			var className = hasClass ? attrs.class : attrs.className;
+
+			vnode.tag = state.tag;
+			vnode.attrs = {};
+
+			if (!isEmpty(state.attrs) && !isEmpty(attrs)) {
+				var newAttrs = {};
+
+				for (var key in attrs) {
+					if (hasOwn.call(attrs, key)) { newAttrs[key] = attrs[key]; }
+				}
+
+				attrs = newAttrs;
+			}
+
+			for (var key in state.attrs) {
+				if (hasOwn.call(state.attrs, key) && key !== "className" && !hasOwn.call(attrs, key)){
+					attrs[key] = state.attrs[key];
+				}
+			}
+			if (className != null || state.attrs.className != null) { attrs.className =
+				className != null
+					? state.attrs.className != null
+						? String(state.attrs.className) + " " + String(className)
+						: className
+					: state.attrs.className != null
+						? state.attrs.className
+						: null; }
+
+			if (hasClass) { attrs.class = null; }
+
+			for (var key in attrs) {
+				if (hasOwn.call(attrs, key) && key !== "key") {
+					vnode.attrs = attrs;
+					break
+				}
+			}
+
+			return vnode
+		}
+
+		function hyperscript(selector) {
+			if (selector == null || typeof selector !== "string" && typeof selector !== "function" && typeof selector.view !== "function") {
+				throw Error("The selector must be either a string or a component.");
+			}
+
+			var vnode = hyperscriptVnode.apply(1, arguments);
+
+			if (typeof selector === "string") {
+				vnode.children = Vnode.normalizeChildren(vnode.children);
+				if (selector !== "[") { return execSelector(selectorCache[selector] || compileSelector(selector), vnode) }
+			}
+
+			vnode.tag = selector;
+			return vnode
+		}
+
+		hyperscript_1$1 = hyperscript;
+		return hyperscript_1$1;
+	}
+
+	var trust;
+	var hasRequiredTrust;
+
+	function requireTrust () {
+		if (hasRequiredTrust) { return trust; }
+		hasRequiredTrust = 1;
+
+		var Vnode = requireVnode();
+
+		trust = function(html) {
+			if (html == null) { html = ""; }
+			return Vnode("<", undefined, undefined, html, undefined, undefined)
+		};
+		return trust;
+	}
+
+	var fragment;
+	var hasRequiredFragment;
+
+	function requireFragment () {
+		if (hasRequiredFragment) { return fragment; }
+		hasRequiredFragment = 1;
+
+		var Vnode = requireVnode();
+		var hyperscriptVnode = requireHyperscriptVnode();
+
+		fragment = function() {
+			var vnode = hyperscriptVnode.apply(0, arguments);
+
+			vnode.tag = "[";
+			vnode.children = Vnode.normalizeChildren(vnode.children);
+			return vnode
+		};
+		return fragment;
+	}
+
+	var hyperscript_1;
+	var hasRequiredHyperscript;
+
+	function requireHyperscript () {
+		if (hasRequiredHyperscript) { return hyperscript_1; }
+		hasRequiredHyperscript = 1;
+
+		var hyperscript = requireHyperscript$1();
+
+		hyperscript.trust = requireTrust();
+		hyperscript.fragment = requireFragment();
+
+		hyperscript_1 = hyperscript;
+		return hyperscript_1;
+	}
+
+	var promise = {exports: {}};
+
+	var polyfill;
+	var hasRequiredPolyfill;
+
+	function requirePolyfill () {
+		if (hasRequiredPolyfill) { return polyfill; }
+		hasRequiredPolyfill = 1;
+		/** @constructor */
+		var PromisePolyfill = function(executor) {
+			if (!(this instanceof PromisePolyfill)) { throw new Error("Promise must be called with 'new'.") }
+			if (typeof executor !== "function") { throw new TypeError("executor must be a function.") }
+
+			var self = this, resolvers = [], rejectors = [], resolveCurrent = handler(resolvers, true), rejectCurrent = handler(rejectors, false);
+			var instance = self._instance = {resolvers: resolvers, rejectors: rejectors};
+			var callAsync = typeof setImmediate === "function" ? setImmediate : setTimeout;
+			function handler(list, shouldAbsorb) {
+				return function execute(value) {
+					var then;
+					try {
+						if (shouldAbsorb && value != null && (typeof value === "object" || typeof value === "function") && typeof (then = value.then) === "function") {
+							if (value === self) { throw new TypeError("Promise can't be resolved with itself.") }
+							executeOnce(then.bind(value));
+						}
+						else {
+							callAsync(function() {
+								if (!shouldAbsorb && list.length === 0) { console.error("Possible unhandled promise rejection:", value); }
+								for (var i = 0; i < list.length; i++) { list[i](value); }
+								resolvers.length = 0, rejectors.length = 0;
+								instance.state = shouldAbsorb;
+								instance.retry = function() {execute(value);};
+							});
+						}
+					}
+					catch (e) {
+						rejectCurrent(e);
+					}
+				}
+			}
+			function executeOnce(then) {
+				var runs = 0;
+				function run(fn) {
+					return function(value) {
+						if (runs++ > 0) { return }
+						fn(value);
+					}
+				}
+				var onerror = run(rejectCurrent);
+				try {then(run(resolveCurrent), onerror);} catch (e) {onerror(e);}
+			}
+
+			executeOnce(executor);
+		};
+		PromisePolyfill.prototype.then = function(onFulfilled, onRejection) {
+			var self = this, instance = self._instance;
+			function handle(callback, list, next, state) {
+				list.push(function(value) {
+					if (typeof callback !== "function") { next(value); }
+					else { try {resolveNext(callback(value));} catch (e) {if (rejectNext) { rejectNext(e); }} }
+				});
+				if (typeof instance.retry === "function" && state === instance.state) { instance.retry(); }
+			}
+			var resolveNext, rejectNext;
+			var promise = new PromisePolyfill(function(resolve, reject) {resolveNext = resolve, rejectNext = reject;});
+			handle(onFulfilled, instance.resolvers, resolveNext, true), handle(onRejection, instance.rejectors, rejectNext, false);
+			return promise
+		};
+		PromisePolyfill.prototype.catch = function(onRejection) {
+			return this.then(null, onRejection)
+		};
+		PromisePolyfill.prototype.finally = function(callback) {
+			return this.then(
+				function(value) {
+					return PromisePolyfill.resolve(callback()).then(function() {
+						return value
+					})
+				},
+				function(reason) {
+					return PromisePolyfill.resolve(callback()).then(function() {
+						return PromisePolyfill.reject(reason);
+					})
+				}
+			)
+		};
+		PromisePolyfill.resolve = function(value) {
+			if (value instanceof PromisePolyfill) { return value }
+			return new PromisePolyfill(function(resolve) {resolve(value);})
+		};
+		PromisePolyfill.reject = function(value) {
+			return new PromisePolyfill(function(resolve, reject) {reject(value);})
+		};
+		PromisePolyfill.all = function(list) {
+			return new PromisePolyfill(function(resolve, reject) {
+				var total = list.length, count = 0, values = [];
+				if (list.length === 0) { resolve([]); }
+				else { for (var i = 0; i < list.length; i++) {
+					(function(i) {
+						function consume(value) {
+							count++;
+							values[i] = value;
+							if (count === total) { resolve(values); }
+						}
+						if (list[i] != null && (typeof list[i] === "object" || typeof list[i] === "function") && typeof list[i].then === "function") {
+							list[i].then(consume, reject);
+						}
+						else { consume(list[i]); }
+					})(i);
+				} }
+			})
+		};
+		PromisePolyfill.race = function(list) {
+			return new PromisePolyfill(function(resolve, reject) {
+				for (var i = 0; i < list.length; i++) {
+					list[i].then(resolve, reject);
+				}
+			})
+		};
+
+		polyfill = PromisePolyfill;
+		return polyfill;
+	}
+
+	/* global window */
+
+	var hasRequiredPromise;
+
+	function requirePromise () {
+		if (hasRequiredPromise) { return promise.exports; }
+		hasRequiredPromise = 1;
+
+		var PromisePolyfill = requirePolyfill();
+
+		if (typeof window !== "undefined") {
+			if (typeof window.Promise === "undefined") {
+				window.Promise = PromisePolyfill;
+			} else if (!window.Promise.prototype.finally) {
+				window.Promise.prototype.finally = PromisePolyfill.prototype.finally;
+			}
+			promise.exports = window.Promise;
+		} else if (typeof commonjsGlobal !== "undefined") {
+			if (typeof commonjsGlobal.Promise === "undefined") {
+				commonjsGlobal.Promise = PromisePolyfill;
+			} else if (!commonjsGlobal.Promise.prototype.finally) {
+				commonjsGlobal.Promise.prototype.finally = PromisePolyfill.prototype.finally;
+			}
+			promise.exports = commonjsGlobal.Promise;
+		} else {
+			promise.exports = PromisePolyfill;
+		}
+		return promise.exports;
+	}
+
+	var render$1;
+	var hasRequiredRender$1;
+
+	function requireRender$1 () {
+		if (hasRequiredRender$1) { return render$1; }
+		hasRequiredRender$1 = 1;
+
+		var Vnode = requireVnode();
+
+		render$1 = function($window) {
+			var $doc = $window && $window.document;
+			var currentRedraw;
+
+			var nameSpace = {
+				svg: "http://www.w3.org/2000/svg",
+				math: "http://www.w3.org/1998/Math/MathML"
+			};
+
+			function getNameSpace(vnode) {
+				return vnode.attrs && vnode.attrs.xmlns || nameSpace[vnode.tag]
+			}
+
+			//sanity check to discourage people from doing `vnode.state = ...`
+			function checkState(vnode, original) {
+				if (vnode.state !== original) { throw new Error("'vnode.state' must not be modified.") }
+			}
+
+			//Note: the hook is passed as the `this` argument to allow proxying the
+			//arguments without requiring a full array allocation to do so. It also
+			//takes advantage of the fact the current `vnode` is the first argument in
+			//all lifecycle methods.
+			function callHook(vnode) {
+				var original = vnode.state;
+				try {
+					return this.apply(original, arguments)
+				} finally {
+					checkState(vnode, original);
+				}
+			}
+
+			// IE11 (at least) throws an UnspecifiedError when accessing document.activeElement when
+			// inside an iframe. Catch and swallow this error, and heavy-handidly return null.
+			function activeElement() {
+				try {
+					return $doc.activeElement
+				} catch (e) {
+					return null
+				}
+			}
+			//create
+			function createNodes(parent, vnodes, start, end, hooks, nextSibling, ns) {
+				for (var i = start; i < end; i++) {
+					var vnode = vnodes[i];
+					if (vnode != null) {
+						createNode(parent, vnode, hooks, ns, nextSibling);
+					}
+				}
+			}
+			function createNode(parent, vnode, hooks, ns, nextSibling) {
+				var tag = vnode.tag;
+				if (typeof tag === "string") {
+					vnode.state = {};
+					if (vnode.attrs != null) { initLifecycle(vnode.attrs, vnode, hooks); }
+					switch (tag) {
+						case "#": createText(parent, vnode, nextSibling); break
+						case "<": createHTML(parent, vnode, ns, nextSibling); break
+						case "[": createFragment(parent, vnode, hooks, ns, nextSibling); break
+						default: createElement(parent, vnode, hooks, ns, nextSibling);
+					}
+				}
+				else { createComponent(parent, vnode, hooks, ns, nextSibling); }
+			}
+			function createText(parent, vnode, nextSibling) {
+				vnode.dom = $doc.createTextNode(vnode.children);
+				insertNode(parent, vnode.dom, nextSibling);
+			}
+			var possibleParents = {caption: "table", thead: "table", tbody: "table", tfoot: "table", tr: "tbody", th: "tr", td: "tr", colgroup: "table", col: "colgroup"};
+			function createHTML(parent, vnode, ns, nextSibling) {
+				var match = vnode.children.match(/^\s*?<(\w+)/im) || [];
+				// not using the proper parent makes the child element(s) vanish.
+				//     var div = document.createElement("div")
+				//     div.innerHTML = "<td>i</td><td>j</td>"
+				//     console.log(div.innerHTML)
+				// --> "ij", no <td> in sight.
+				var temp = $doc.createElement(possibleParents[match[1]] || "div");
+				if (ns === "http://www.w3.org/2000/svg") {
+					temp.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\">" + vnode.children + "</svg>";
+					temp = temp.firstChild;
+				} else {
+					temp.innerHTML = vnode.children;
+				}
+				vnode.dom = temp.firstChild;
+				vnode.domSize = temp.childNodes.length;
+				// Capture nodes to remove, so we don't confuse them.
+				vnode.instance = [];
+				var fragment = $doc.createDocumentFragment();
+				var child;
+				while (child = temp.firstChild) {
+					vnode.instance.push(child);
+					fragment.appendChild(child);
+				}
+				insertNode(parent, fragment, nextSibling);
+			}
+			function createFragment(parent, vnode, hooks, ns, nextSibling) {
+				var fragment = $doc.createDocumentFragment();
+				if (vnode.children != null) {
+					var children = vnode.children;
+					createNodes(fragment, children, 0, children.length, hooks, null, ns);
+				}
+				vnode.dom = fragment.firstChild;
+				vnode.domSize = fragment.childNodes.length;
+				insertNode(parent, fragment, nextSibling);
+			}
+			function createElement(parent, vnode, hooks, ns, nextSibling) {
+				var tag = vnode.tag;
+				var attrs = vnode.attrs;
+				var is = attrs && attrs.is;
+
+				ns = getNameSpace(vnode) || ns;
+
+				var element = ns ?
+					is ? $doc.createElementNS(ns, tag, {is: is}) : $doc.createElementNS(ns, tag) :
+					is ? $doc.createElement(tag, {is: is}) : $doc.createElement(tag);
+				vnode.dom = element;
+
+				if (attrs != null) {
+					setAttrs(vnode, attrs, ns);
+				}
+
+				insertNode(parent, element, nextSibling);
+
+				if (!maybeSetContentEditable(vnode)) {
+					if (vnode.children != null) {
+						var children = vnode.children;
+						createNodes(element, children, 0, children.length, hooks, null, ns);
+						if (vnode.tag === "select" && attrs != null) { setLateSelectAttrs(vnode, attrs); }
+					}
+				}
+			}
+			function initComponent(vnode, hooks) {
+				var sentinel;
+				if (typeof vnode.tag.view === "function") {
+					vnode.state = Object.create(vnode.tag);
+					sentinel = vnode.state.view;
+					if (sentinel.$$reentrantLock$$ != null) { return }
+					sentinel.$$reentrantLock$$ = true;
+				} else {
+					vnode.state = void 0;
+					sentinel = vnode.tag;
+					if (sentinel.$$reentrantLock$$ != null) { return }
+					sentinel.$$reentrantLock$$ = true;
+					vnode.state = (vnode.tag.prototype != null && typeof vnode.tag.prototype.view === "function") ? new vnode.tag(vnode) : vnode.tag(vnode);
+				}
+				initLifecycle(vnode.state, vnode, hooks);
+				if (vnode.attrs != null) { initLifecycle(vnode.attrs, vnode, hooks); }
+				vnode.instance = Vnode.normalize(callHook.call(vnode.state.view, vnode));
+				if (vnode.instance === vnode) { throw Error("A view cannot return the vnode it received as argument") }
+				sentinel.$$reentrantLock$$ = null;
+			}
+			function createComponent(parent, vnode, hooks, ns, nextSibling) {
+				initComponent(vnode, hooks);
+				if (vnode.instance != null) {
+					createNode(parent, vnode.instance, hooks, ns, nextSibling);
+					vnode.dom = vnode.instance.dom;
+					vnode.domSize = vnode.dom != null ? vnode.instance.domSize : 0;
+				}
+				else {
+					vnode.domSize = 0;
+				}
+			}
+
+			//update
+			/**
+			 * @param {Element|Fragment} parent - the parent element
+			 * @param {Vnode[] | null} old - the list of vnodes of the last `render()` call for
+			 *                               this part of the tree
+			 * @param {Vnode[] | null} vnodes - as above, but for the current `render()` call.
+			 * @param {Function[]} hooks - an accumulator of post-render hooks (oncreate/onupdate)
+			 * @param {Element | null} nextSibling - the next DOM node if we're dealing with a
+			 *                                       fragment that is not the last item in its
+			 *                                       parent
+			 * @param {'svg' | 'math' | String | null} ns) - the current XML namespace, if any
+			 * @returns void
+			 */
+			// This function diffs and patches lists of vnodes, both keyed and unkeyed.
+			//
+			// We will:
+			//
+			// 1. describe its general structure
+			// 2. focus on the diff algorithm optimizations
+			// 3. discuss DOM node operations.
+
+			// ## Overview:
+			//
+			// The updateNodes() function:
+			// - deals with trivial cases
+			// - determines whether the lists are keyed or unkeyed based on the first non-null node
+			//   of each list.
+			// - diffs them and patches the DOM if needed (that's the brunt of the code)
+			// - manages the leftovers: after diffing, are there:
+			//   - old nodes left to remove?
+			// 	 - new nodes to insert?
+			// 	 deal with them!
+			//
+			// The lists are only iterated over once, with an exception for the nodes in `old` that
+			// are visited in the fourth part of the diff and in the `removeNodes` loop.
+
+			// ## Diffing
+			//
+			// Reading https://github.com/localvoid/ivi/blob/ddc09d06abaef45248e6133f7040d00d3c6be853/packages/ivi/src/vdom/implementation.ts#L617-L837
+			// may be good for context on longest increasing subsequence-based logic for moving nodes.
+			//
+			// In order to diff keyed lists, one has to
+			//
+			// 1) match nodes in both lists, per key, and update them accordingly
+			// 2) create the nodes present in the new list, but absent in the old one
+			// 3) remove the nodes present in the old list, but absent in the new one
+			// 4) figure out what nodes in 1) to move in order to minimize the DOM operations.
+			//
+			// To achieve 1) one can create a dictionary of keys => index (for the old list), then iterate
+			// over the new list and for each new vnode, find the corresponding vnode in the old list using
+			// the map.
+			// 2) is achieved in the same step: if a new node has no corresponding entry in the map, it is new
+			// and must be created.
+			// For the removals, we actually remove the nodes that have been updated from the old list.
+			// The nodes that remain in that list after 1) and 2) have been performed can be safely removed.
+			// The fourth step is a bit more complex and relies on the longest increasing subsequence (LIS)
+			// algorithm.
+			//
+			// the longest increasing subsequence is the list of nodes that can remain in place. Imagine going
+			// from `1,2,3,4,5` to `4,5,1,2,3` where the numbers are not necessarily the keys, but the indices
+			// corresponding to the keyed nodes in the old list (keyed nodes `e,d,c,b,a` => `b,a,e,d,c` would
+			//  match the above lists, for example).
+			//
+			// In there are two increasing subsequences: `4,5` and `1,2,3`, the latter being the longest. We
+			// can update those nodes without moving them, and only call `insertNode` on `4` and `5`.
+			//
+			// @localvoid adapted the algo to also support node deletions and insertions (the `lis` is actually
+			// the longest increasing subsequence *of old nodes still present in the new list*).
+			//
+			// It is a general algorithm that is fireproof in all circumstances, but it requires the allocation
+			// and the construction of a `key => oldIndex` map, and three arrays (one with `newIndex => oldIndex`,
+			// the `LIS` and a temporary one to create the LIS).
+			//
+			// So we cheat where we can: if the tails of the lists are identical, they are guaranteed to be part of
+			// the LIS and can be updated without moving them.
+			//
+			// If two nodes are swapped, they are guaranteed not to be part of the LIS, and must be moved (with
+			// the exception of the last node if the list is fully reversed).
+			//
+			// ## Finding the next sibling.
+			//
+			// `updateNode()` and `createNode()` expect a nextSibling parameter to perform DOM operations.
+			// When the list is being traversed top-down, at any index, the DOM nodes up to the previous
+			// vnode reflect the content of the new list, whereas the rest of the DOM nodes reflect the old
+			// list. The next sibling must be looked for in the old list using `getNextSibling(... oldStart + 1 ...)`.
+			//
+			// In the other scenarios (swaps, upwards traversal, map-based diff),
+			// the new vnodes list is traversed upwards. The DOM nodes at the bottom of the list reflect the
+			// bottom part of the new vnodes list, and we can use the `v.dom`  value of the previous node
+			// as the next sibling (cached in the `nextSibling` variable).
+
+
+			// ## DOM node moves
+			//
+			// In most scenarios `updateNode()` and `createNode()` perform the DOM operations. However,
+			// this is not the case if the node moved (second and fourth part of the diff algo). We move
+			// the old DOM nodes before updateNode runs because it enables us to use the cached `nextSibling`
+			// variable rather than fetching it using `getNextSibling()`.
+			//
+			// The fourth part of the diff currently inserts nodes unconditionally, leading to issues
+			// like #1791 and #1999. We need to be smarter about those situations where adjascent old
+			// nodes remain together in the new list in a way that isn't covered by parts one and
+			// three of the diff algo.
+
+			function updateNodes(parent, old, vnodes, hooks, nextSibling, ns) {
+				if (old === vnodes || old == null && vnodes == null) { return }
+				else if (old == null || old.length === 0) { createNodes(parent, vnodes, 0, vnodes.length, hooks, nextSibling, ns); }
+				else if (vnodes == null || vnodes.length === 0) { removeNodes(parent, old, 0, old.length); }
+				else {
+					var isOldKeyed = old[0] != null && old[0].key != null;
+					var isKeyed = vnodes[0] != null && vnodes[0].key != null;
+					var start = 0, oldStart = 0;
+					if (!isOldKeyed) { while (oldStart < old.length && old[oldStart] == null) { oldStart++; } }
+					if (!isKeyed) { while (start < vnodes.length && vnodes[start] == null) { start++; } }
+					if (isOldKeyed !== isKeyed) {
+						removeNodes(parent, old, oldStart, old.length);
+						createNodes(parent, vnodes, start, vnodes.length, hooks, nextSibling, ns);
+					} else if (!isKeyed) {
+						// Don't index past the end of either list (causes deopts).
+						var commonLength = old.length < vnodes.length ? old.length : vnodes.length;
+						// Rewind if necessary to the first non-null index on either side.
+						// We could alternatively either explicitly create or remove nodes when `start !== oldStart`
+						// but that would be optimizing for sparse lists which are more rare than dense ones.
+						start = start < oldStart ? start : oldStart;
+						for (; start < commonLength; start++) {
+							o = old[start];
+							v = vnodes[start];
+							if (o === v || o == null && v == null) { continue }
+							else if (o == null) { createNode(parent, v, hooks, ns, getNextSibling(old, start + 1, nextSibling)); }
+							else if (v == null) { removeNode(parent, o); }
+							else { updateNode(parent, o, v, hooks, getNextSibling(old, start + 1, nextSibling), ns); }
+						}
+						if (old.length > commonLength) { removeNodes(parent, old, start, old.length); }
+						if (vnodes.length > commonLength) { createNodes(parent, vnodes, start, vnodes.length, hooks, nextSibling, ns); }
+					} else {
+						// keyed diff
+						var oldEnd = old.length - 1, end = vnodes.length - 1, map, o, v, oe, ve, topSibling;
+
+						// bottom-up
+						while (oldEnd >= oldStart && end >= start) {
+							oe = old[oldEnd];
+							ve = vnodes[end];
+							if (oe.key !== ve.key) { break }
+							if (oe !== ve) { updateNode(parent, oe, ve, hooks, nextSibling, ns); }
+							if (ve.dom != null) { nextSibling = ve.dom; }
+							oldEnd--, end--;
+						}
+						// top-down
+						while (oldEnd >= oldStart && end >= start) {
+							o = old[oldStart];
+							v = vnodes[start];
+							if (o.key !== v.key) { break }
+							oldStart++, start++;
+							if (o !== v) { updateNode(parent, o, v, hooks, getNextSibling(old, oldStart, nextSibling), ns); }
+						}
+						// swaps and list reversals
+						while (oldEnd >= oldStart && end >= start) {
+							if (start === end) { break }
+							if (o.key !== ve.key || oe.key !== v.key) { break }
+							topSibling = getNextSibling(old, oldStart, nextSibling);
+							moveNodes(parent, oe, topSibling);
+							if (oe !== v) { updateNode(parent, oe, v, hooks, topSibling, ns); }
+							if (++start <= --end) { moveNodes(parent, o, nextSibling); }
+							if (o !== ve) { updateNode(parent, o, ve, hooks, nextSibling, ns); }
+							if (ve.dom != null) { nextSibling = ve.dom; }
+							oldStart++; oldEnd--;
+							oe = old[oldEnd];
+							ve = vnodes[end];
+							o = old[oldStart];
+							v = vnodes[start];
+						}
+						// bottom up once again
+						while (oldEnd >= oldStart && end >= start) {
+							if (oe.key !== ve.key) { break }
+							if (oe !== ve) { updateNode(parent, oe, ve, hooks, nextSibling, ns); }
+							if (ve.dom != null) { nextSibling = ve.dom; }
+							oldEnd--, end--;
+							oe = old[oldEnd];
+							ve = vnodes[end];
+						}
+						if (start > end) { removeNodes(parent, old, oldStart, oldEnd + 1); }
+						else if (oldStart > oldEnd) { createNodes(parent, vnodes, start, end + 1, hooks, nextSibling, ns); }
+						else {
+							// inspired by ivi https://github.com/ivijs/ivi/ by Boris Kaul
+							var originalNextSibling = nextSibling, vnodesLength = end - start + 1, oldIndices = new Array(vnodesLength), li=0, i=0, pos = 2147483647, matched = 0, map, lisIndices;
+							for (i = 0; i < vnodesLength; i++) { oldIndices[i] = -1; }
+							for (i = end; i >= start; i--) {
+								if (map == null) { map = getKeyMap(old, oldStart, oldEnd + 1); }
+								ve = vnodes[i];
+								var oldIndex = map[ve.key];
+								if (oldIndex != null) {
+									pos = (oldIndex < pos) ? oldIndex : -1; // becomes -1 if nodes were re-ordered
+									oldIndices[i-start] = oldIndex;
+									oe = old[oldIndex];
+									old[oldIndex] = null;
+									if (oe !== ve) { updateNode(parent, oe, ve, hooks, nextSibling, ns); }
+									if (ve.dom != null) { nextSibling = ve.dom; }
+									matched++;
+								}
+							}
+							nextSibling = originalNextSibling;
+							if (matched !== oldEnd - oldStart + 1) { removeNodes(parent, old, oldStart, oldEnd + 1); }
+							if (matched === 0) { createNodes(parent, vnodes, start, end + 1, hooks, nextSibling, ns); }
+							else {
+								if (pos === -1) {
+									// the indices of the indices of the items that are part of the
+									// longest increasing subsequence in the oldIndices list
+									lisIndices = makeLisIndices(oldIndices);
+									li = lisIndices.length - 1;
+									for (i = end; i >= start; i--) {
+										v = vnodes[i];
+										if (oldIndices[i-start] === -1) { createNode(parent, v, hooks, ns, nextSibling); }
+										else {
+											if (lisIndices[li] === i - start) { li--; }
+											else { moveNodes(parent, v, nextSibling); }
+										}
+										if (v.dom != null) { nextSibling = vnodes[i].dom; }
+									}
+								} else {
+									for (i = end; i >= start; i--) {
+										v = vnodes[i];
+										if (oldIndices[i-start] === -1) { createNode(parent, v, hooks, ns, nextSibling); }
+										if (v.dom != null) { nextSibling = vnodes[i].dom; }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			function updateNode(parent, old, vnode, hooks, nextSibling, ns) {
+				var oldTag = old.tag, tag = vnode.tag;
+				if (oldTag === tag) {
+					vnode.state = old.state;
+					vnode.events = old.events;
+					if (shouldNotUpdate(vnode, old)) { return }
+					if (typeof oldTag === "string") {
+						if (vnode.attrs != null) {
+							updateLifecycle(vnode.attrs, vnode, hooks);
+						}
+						switch (oldTag) {
+							case "#": updateText(old, vnode); break
+							case "<": updateHTML(parent, old, vnode, ns, nextSibling); break
+							case "[": updateFragment(parent, old, vnode, hooks, nextSibling, ns); break
+							default: updateElement(old, vnode, hooks, ns);
+						}
+					}
+					else { updateComponent(parent, old, vnode, hooks, nextSibling, ns); }
+				}
+				else {
+					removeNode(parent, old);
+					createNode(parent, vnode, hooks, ns, nextSibling);
+				}
+			}
+			function updateText(old, vnode) {
+				if (old.children.toString() !== vnode.children.toString()) {
+					old.dom.nodeValue = vnode.children;
+				}
+				vnode.dom = old.dom;
+			}
+			function updateHTML(parent, old, vnode, ns, nextSibling) {
+				if (old.children !== vnode.children) {
+					removeHTML(parent, old);
+					createHTML(parent, vnode, ns, nextSibling);
+				}
+				else {
+					vnode.dom = old.dom;
+					vnode.domSize = old.domSize;
+					vnode.instance = old.instance;
+				}
+			}
+			function updateFragment(parent, old, vnode, hooks, nextSibling, ns) {
+				updateNodes(parent, old.children, vnode.children, hooks, nextSibling, ns);
+				var domSize = 0, children = vnode.children;
+				vnode.dom = null;
+				if (children != null) {
+					for (var i = 0; i < children.length; i++) {
+						var child = children[i];
+						if (child != null && child.dom != null) {
+							if (vnode.dom == null) { vnode.dom = child.dom; }
+							domSize += child.domSize || 1;
+						}
+					}
+					if (domSize !== 1) { vnode.domSize = domSize; }
+				}
+			}
+			function updateElement(old, vnode, hooks, ns) {
+				var element = vnode.dom = old.dom;
+				ns = getNameSpace(vnode) || ns;
+
+				if (vnode.tag === "textarea") {
+					if (vnode.attrs == null) { vnode.attrs = {}; }
+				}
+				updateAttrs(vnode, old.attrs, vnode.attrs, ns);
+				if (!maybeSetContentEditable(vnode)) {
+					updateNodes(element, old.children, vnode.children, hooks, null, ns);
+				}
+			}
+			function updateComponent(parent, old, vnode, hooks, nextSibling, ns) {
+				vnode.instance = Vnode.normalize(callHook.call(vnode.state.view, vnode));
+				if (vnode.instance === vnode) { throw Error("A view cannot return the vnode it received as argument") }
+				updateLifecycle(vnode.state, vnode, hooks);
+				if (vnode.attrs != null) { updateLifecycle(vnode.attrs, vnode, hooks); }
+				if (vnode.instance != null) {
+					if (old.instance == null) { createNode(parent, vnode.instance, hooks, ns, nextSibling); }
+					else { updateNode(parent, old.instance, vnode.instance, hooks, nextSibling, ns); }
+					vnode.dom = vnode.instance.dom;
+					vnode.domSize = vnode.instance.domSize;
+				}
+				else if (old.instance != null) {
+					removeNode(parent, old.instance);
+					vnode.dom = undefined;
+					vnode.domSize = 0;
+				}
+				else {
+					vnode.dom = old.dom;
+					vnode.domSize = old.domSize;
+				}
+			}
+			function getKeyMap(vnodes, start, end) {
+				var map = Object.create(null);
+				for (; start < end; start++) {
+					var vnode = vnodes[start];
+					if (vnode != null) {
+						var key = vnode.key;
+						if (key != null) { map[key] = start; }
+					}
+				}
+				return map
+			}
+			// Lifted from ivi https://github.com/ivijs/ivi/
+			// takes a list of unique numbers (-1 is special and can
+			// occur multiple times) and returns an array with the indices
+			// of the items that are part of the longest increasing
+			// subsequence
+			var lisTemp = [];
+			function makeLisIndices(a) {
+				var result = [0];
+				var u = 0, v = 0, i = 0;
+				var il = lisTemp.length = a.length;
+				for (var i = 0; i < il; i++) { lisTemp[i] = a[i]; }
+				for (var i = 0; i < il; ++i) {
+					if (a[i] === -1) { continue }
+					var j = result[result.length - 1];
+					if (a[j] < a[i]) {
+						lisTemp[i] = j;
+						result.push(i);
+						continue
+					}
+					u = 0;
+					v = result.length - 1;
+					while (u < v) {
+						// Fast integer average without overflow.
+						// eslint-disable-next-line no-bitwise
+						var c = (u >>> 1) + (v >>> 1) + (u & v & 1);
+						if (a[result[c]] < a[i]) {
+							u = c + 1;
+						}
+						else {
+							v = c;
+						}
+					}
+					if (a[i] < a[result[u]]) {
+						if (u > 0) { lisTemp[i] = result[u - 1]; }
+						result[u] = i;
+					}
+				}
+				u = result.length;
+				v = result[u - 1];
+				while (u-- > 0) {
+					result[u] = v;
+					v = lisTemp[v];
+				}
+				lisTemp.length = 0;
+				return result
+			}
+
+			function getNextSibling(vnodes, i, nextSibling) {
+				for (; i < vnodes.length; i++) {
+					if (vnodes[i] != null && vnodes[i].dom != null) { return vnodes[i].dom }
+				}
+				return nextSibling
+			}
+
+			// This covers a really specific edge case:
+			// - Parent node is keyed and contains child
+			// - Child is removed, returns unresolved promise in `onbeforeremove`
+			// - Parent node is moved in keyed diff
+			// - Remaining children still need moved appropriately
+			//
+			// Ideally, I'd track removed nodes as well, but that introduces a lot more
+			// complexity and I'm not exactly interested in doing that.
+			function moveNodes(parent, vnode, nextSibling) {
+				var frag = $doc.createDocumentFragment();
+				moveChildToFrag(parent, frag, vnode);
+				insertNode(parent, frag, nextSibling);
+			}
+			function moveChildToFrag(parent, frag, vnode) {
+				// Dodge the recursion overhead in a few of the most common cases.
+				while (vnode.dom != null && vnode.dom.parentNode === parent) {
+					if (typeof vnode.tag !== "string") {
+						vnode = vnode.instance;
+						if (vnode != null) { continue }
+					} else if (vnode.tag === "<") {
+						for (var i = 0; i < vnode.instance.length; i++) {
+							frag.appendChild(vnode.instance[i]);
+						}
+					} else if (vnode.tag !== "[") {
+						// Don't recurse for text nodes *or* elements, just fragments
+						frag.appendChild(vnode.dom);
+					} else if (vnode.children.length === 1) {
+						vnode = vnode.children[0];
+						if (vnode != null) { continue }
+					} else {
+						for (var i = 0; i < vnode.children.length; i++) {
+							var child = vnode.children[i];
+							if (child != null) { moveChildToFrag(parent, frag, child); }
+						}
+					}
+					break
+				}
+			}
+
+			function insertNode(parent, dom, nextSibling) {
+				if (nextSibling != null) { parent.insertBefore(dom, nextSibling); }
+				else { parent.appendChild(dom); }
+			}
+
+			function maybeSetContentEditable(vnode) {
+				if (vnode.attrs == null || (
+					vnode.attrs.contenteditable == null && // attribute
+					vnode.attrs.contentEditable == null // property
+				)) { return false }
+				var children = vnode.children;
+				if (children != null && children.length === 1 && children[0].tag === "<") {
+					var content = children[0].children;
+					if (vnode.dom.innerHTML !== content) { vnode.dom.innerHTML = content; }
+				}
+				else if (children != null && children.length !== 0) { throw new Error("Child node of a contenteditable must be trusted.") }
+				return true
+			}
+
+			//remove
+			function removeNodes(parent, vnodes, start, end) {
+				for (var i = start; i < end; i++) {
+					var vnode = vnodes[i];
+					if (vnode != null) { removeNode(parent, vnode); }
+				}
+			}
+			function removeNode(parent, vnode) {
+				var mask = 0;
+				var original = vnode.state;
+				var stateResult, attrsResult;
+				if (typeof vnode.tag !== "string" && typeof vnode.state.onbeforeremove === "function") {
+					var result = callHook.call(vnode.state.onbeforeremove, vnode);
+					if (result != null && typeof result.then === "function") {
+						mask = 1;
+						stateResult = result;
+					}
+				}
+				if (vnode.attrs && typeof vnode.attrs.onbeforeremove === "function") {
+					var result = callHook.call(vnode.attrs.onbeforeremove, vnode);
+					if (result != null && typeof result.then === "function") {
+						// eslint-disable-next-line no-bitwise
+						mask |= 2;
+						attrsResult = result;
+					}
+				}
+				checkState(vnode, original);
+
+				// If we can, try to fast-path it and avoid all the overhead of awaiting
+				if (!mask) {
+					onremove(vnode);
+					removeChild(parent, vnode);
+				} else {
+					if (stateResult != null) {
+						var next = function () {
+							// eslint-disable-next-line no-bitwise
+							if (mask & 1) { mask &= 2; if (!mask) { reallyRemove(); } }
+						};
+						stateResult.then(next, next);
+					}
+					if (attrsResult != null) {
+						var next = function () {
+							// eslint-disable-next-line no-bitwise
+							if (mask & 2) { mask &= 1; if (!mask) { reallyRemove(); } }
+						};
+						attrsResult.then(next, next);
+					}
+				}
+
+				function reallyRemove() {
+					checkState(vnode, original);
+					onremove(vnode);
+					removeChild(parent, vnode);
+				}
+			}
+			function removeHTML(parent, vnode) {
+				for (var i = 0; i < vnode.instance.length; i++) {
+					parent.removeChild(vnode.instance[i]);
+				}
+			}
+			function removeChild(parent, vnode) {
+				// Dodge the recursion overhead in a few of the most common cases.
+				while (vnode.dom != null && vnode.dom.parentNode === parent) {
+					if (typeof vnode.tag !== "string") {
+						vnode = vnode.instance;
+						if (vnode != null) { continue }
+					} else if (vnode.tag === "<") {
+						removeHTML(parent, vnode);
+					} else {
+						if (vnode.tag !== "[") {
+							parent.removeChild(vnode.dom);
+							if (!Array.isArray(vnode.children)) { break }
+						}
+						if (vnode.children.length === 1) {
+							vnode = vnode.children[0];
+							if (vnode != null) { continue }
+						} else {
+							for (var i = 0; i < vnode.children.length; i++) {
+								var child = vnode.children[i];
+								if (child != null) { removeChild(parent, child); }
+							}
+						}
+					}
+					break
+				}
+			}
+			function onremove(vnode) {
+				if (typeof vnode.tag !== "string" && typeof vnode.state.onremove === "function") { callHook.call(vnode.state.onremove, vnode); }
+				if (vnode.attrs && typeof vnode.attrs.onremove === "function") { callHook.call(vnode.attrs.onremove, vnode); }
+				if (typeof vnode.tag !== "string") {
+					if (vnode.instance != null) { onremove(vnode.instance); }
+				} else {
+					var children = vnode.children;
+					if (Array.isArray(children)) {
+						for (var i = 0; i < children.length; i++) {
+							var child = children[i];
+							if (child != null) { onremove(child); }
+						}
+					}
+				}
+			}
+
+			//attrs
+			function setAttrs(vnode, attrs, ns) {
+				// If you assign an input type that is not supported by IE 11 with an assignment expression, an error will occur.
+				//
+				// Also, the DOM does things to inputs based on the value, so it needs set first.
+				// See: https://github.com/MithrilJS/mithril.js/issues/2622
+				if (vnode.tag === "input" && attrs.type != null) { vnode.dom.setAttribute("type", attrs.type); }
+				var isFileInput = attrs != null && vnode.tag === "input" && attrs.type === "file";
+				for (var key in attrs) {
+					setAttr(vnode, key, null, attrs[key], ns, isFileInput);
+				}
+			}
+			function setAttr(vnode, key, old, value, ns, isFileInput) {
+				if (key === "key" || key === "is" || value == null || isLifecycleMethod(key) || (old === value && !isFormAttribute(vnode, key)) && typeof value !== "object" || key === "type" && vnode.tag === "input") { return }
+				if (key[0] === "o" && key[1] === "n") { return updateEvent(vnode, key, value) }
+				if (key.slice(0, 6) === "xlink:") { vnode.dom.setAttributeNS("http://www.w3.org/1999/xlink", key.slice(6), value); }
+				else if (key === "style") { updateStyle(vnode.dom, old, value); }
+				else if (hasPropertyKey(vnode, key, ns)) {
+					if (key === "value") {
+						// Only do the coercion if we're actually going to check the value.
+						/* eslint-disable no-implicit-coercion */
+						//setting input[value] to same value by typing on focused element moves cursor to end in Chrome
+						//setting input[type=file][value] to same value causes an error to be generated if it's non-empty
+						if ((vnode.tag === "input" || vnode.tag === "textarea") && vnode.dom.value === "" + value && (isFileInput || vnode.dom === activeElement())) { return }
+						//setting select[value] to same value while having select open blinks select dropdown in Chrome
+						if (vnode.tag === "select" && old !== null && vnode.dom.value === "" + value) { return }
+						//setting option[value] to same value while having select open blinks select dropdown in Chrome
+						if (vnode.tag === "option" && old !== null && vnode.dom.value === "" + value) { return }
+						//setting input[type=file][value] to different value is an error if it's non-empty
+						// Not ideal, but it at least works around the most common source of uncaught exceptions for now.
+						if (isFileInput && "" + value !== "") { console.error("`value` is read-only on file inputs!"); return }
+						/* eslint-enable no-implicit-coercion */
+					}
+					vnode.dom[key] = value;
+				} else {
+					if (typeof value === "boolean") {
+						if (value) { vnode.dom.setAttribute(key, ""); }
+						else { vnode.dom.removeAttribute(key); }
+					}
+					else { vnode.dom.setAttribute(key === "className" ? "class" : key, value); }
+				}
+			}
+			function removeAttr(vnode, key, old, ns) {
+				if (key === "key" || key === "is" || old == null || isLifecycleMethod(key)) { return }
+				if (key[0] === "o" && key[1] === "n") { updateEvent(vnode, key, undefined); }
+				else if (key === "style") { updateStyle(vnode.dom, old, null); }
+				else if (
+					hasPropertyKey(vnode, key, ns)
+					&& key !== "className"
+					&& key !== "title" // creates "null" as title
+					&& !(key === "value" && (
+						vnode.tag === "option"
+						|| vnode.tag === "select" && vnode.dom.selectedIndex === -1 && vnode.dom === activeElement()
+					))
+					&& !(vnode.tag === "input" && key === "type")
+				) {
+					vnode.dom[key] = null;
+				} else {
+					var nsLastIndex = key.indexOf(":");
+					if (nsLastIndex !== -1) { key = key.slice(nsLastIndex + 1); }
+					if (old !== false) { vnode.dom.removeAttribute(key === "className" ? "class" : key); }
+				}
+			}
+			function setLateSelectAttrs(vnode, attrs) {
+				if ("value" in attrs) {
+					if(attrs.value === null) {
+						if (vnode.dom.selectedIndex !== -1) { vnode.dom.value = null; }
+					} else {
+						var normalized = "" + attrs.value; // eslint-disable-line no-implicit-coercion
+						if (vnode.dom.value !== normalized || vnode.dom.selectedIndex === -1) {
+							vnode.dom.value = normalized;
+						}
+					}
+				}
+				if ("selectedIndex" in attrs) { setAttr(vnode, "selectedIndex", null, attrs.selectedIndex, undefined); }
+			}
+			function updateAttrs(vnode, old, attrs, ns) {
+				if (old && old === attrs) {
+					console.warn("Don't reuse attrs object, use new object for every redraw, this will throw in next major");
+				}
+				if (attrs != null) {
+					// If you assign an input type that is not supported by IE 11 with an assignment expression, an error will occur.
+					//
+					// Also, the DOM does things to inputs based on the value, so it needs set first.
+					// See: https://github.com/MithrilJS/mithril.js/issues/2622
+					if (vnode.tag === "input" && attrs.type != null) { vnode.dom.setAttribute("type", attrs.type); }
+					var isFileInput = vnode.tag === "input" && attrs.type === "file";
+					for (var key in attrs) {
+						setAttr(vnode, key, old && old[key], attrs[key], ns, isFileInput);
+					}
+				}
+				var val;
+				if (old != null) {
+					for (var key in old) {
+						if (((val = old[key]) != null) && (attrs == null || attrs[key] == null)) {
+							removeAttr(vnode, key, val, ns);
+						}
+					}
+				}
+			}
+			function isFormAttribute(vnode, attr) {
+				return attr === "value" || attr === "checked" || attr === "selectedIndex" || attr === "selected" && vnode.dom === activeElement() || vnode.tag === "option" && vnode.dom.parentNode === $doc.activeElement
+			}
+			function isLifecycleMethod(attr) {
+				return attr === "oninit" || attr === "oncreate" || attr === "onupdate" || attr === "onremove" || attr === "onbeforeremove" || attr === "onbeforeupdate"
+			}
+			function hasPropertyKey(vnode, key, ns) {
+				// Filter out namespaced keys
+				return ns === undefined && (
+					// If it's a custom element, just keep it.
+					vnode.tag.indexOf("-") > -1 || vnode.attrs != null && vnode.attrs.is ||
+					// If it's a normal element, let's try to avoid a few browser bugs.
+					key !== "href" && key !== "list" && key !== "form" && key !== "width" && key !== "height"// && key !== "type"
+					// Defer the property check until *after* we check everything.
+				) && key in vnode.dom
+			}
+
+			//style
+			var uppercaseRegex = /[A-Z]/g;
+			function toLowerCase(capital) { return "-" + capital.toLowerCase() }
+			function normalizeKey(key) {
+				return key[0] === "-" && key[1] === "-" ? key :
+					key === "cssFloat" ? "float" :
+						key.replace(uppercaseRegex, toLowerCase)
+			}
+			function updateStyle(element, old, style) {
+				if (old === style) ; else if (style == null) {
+					// New style is missing, just clear it.
+					element.style.cssText = "";
+				} else if (typeof style !== "object") {
+					// New style is a string, let engine deal with patching.
+					element.style.cssText = style;
+				} else if (old == null || typeof old !== "object") {
+					// `old` is missing or a string, `style` is an object.
+					element.style.cssText = "";
+					// Add new style properties
+					for (var key in style) {
+						var value = style[key];
+						if (value != null) { element.style.setProperty(normalizeKey(key), String(value)); }
+					}
+				} else {
+					// Both old & new are (different) objects.
+					// Update style properties that have changed
+					for (var key in style) {
+						var value = style[key];
+						if (value != null && (value = String(value)) !== String(old[key])) {
+							element.style.setProperty(normalizeKey(key), value);
+						}
+					}
+					// Remove style properties that no longer exist
+					for (var key in old) {
+						if (old[key] != null && style[key] == null) {
+							element.style.removeProperty(normalizeKey(key));
+						}
+					}
+				}
+			}
+
+			// Here's an explanation of how this works:
+			// 1. The event names are always (by design) prefixed by `on`.
+			// 2. The EventListener interface accepts either a function or an object
+			//    with a `handleEvent` method.
+			// 3. The object does not inherit from `Object.prototype`, to avoid
+			//    any potential interference with that (e.g. setters).
+			// 4. The event name is remapped to the handler before calling it.
+			// 5. In function-based event handlers, `ev.target === this`. We replicate
+			//    that below.
+			// 6. In function-based event handlers, `return false` prevents the default
+			//    action and stops event propagation. We replicate that below.
+			function EventDict() {
+				// Save this, so the current redraw is correctly tracked.
+				this._ = currentRedraw;
+			}
+			EventDict.prototype = Object.create(null);
+			EventDict.prototype.handleEvent = function (ev) {
+				var handler = this["on" + ev.type];
+				var result;
+				if (typeof handler === "function") { result = handler.call(ev.currentTarget, ev); }
+				else if (typeof handler.handleEvent === "function") { handler.handleEvent(ev); }
+				if (this._ && ev.redraw !== false) { (0, this._)(); }
+				if (result === false) {
+					ev.preventDefault();
+					ev.stopPropagation();
+				}
+			};
+
+			//event
+			function updateEvent(vnode, key, value) {
+				if (vnode.events != null) {
+					vnode.events._ = currentRedraw;
+					if (vnode.events[key] === value) { return }
+					if (value != null && (typeof value === "function" || typeof value === "object")) {
+						if (vnode.events[key] == null) { vnode.dom.addEventListener(key.slice(2), vnode.events, false); }
+						vnode.events[key] = value;
+					} else {
+						if (vnode.events[key] != null) { vnode.dom.removeEventListener(key.slice(2), vnode.events, false); }
+						vnode.events[key] = undefined;
+					}
+				} else if (value != null && (typeof value === "function" || typeof value === "object")) {
+					vnode.events = new EventDict();
+					vnode.dom.addEventListener(key.slice(2), vnode.events, false);
+					vnode.events[key] = value;
+				}
+			}
+
+			//lifecycle
+			function initLifecycle(source, vnode, hooks) {
+				if (typeof source.oninit === "function") { callHook.call(source.oninit, vnode); }
+				if (typeof source.oncreate === "function") { hooks.push(callHook.bind(source.oncreate, vnode)); }
+			}
+			function updateLifecycle(source, vnode, hooks) {
+				if (typeof source.onupdate === "function") { hooks.push(callHook.bind(source.onupdate, vnode)); }
+			}
+			function shouldNotUpdate(vnode, old) {
+				do {
+					if (vnode.attrs != null && typeof vnode.attrs.onbeforeupdate === "function") {
+						var force = callHook.call(vnode.attrs.onbeforeupdate, vnode, old);
+						if (force !== undefined && !force) { break }
+					}
+					if (typeof vnode.tag !== "string" && typeof vnode.state.onbeforeupdate === "function") {
+						var force = callHook.call(vnode.state.onbeforeupdate, vnode, old);
+						if (force !== undefined && !force) { break }
+					}
+					return false
+				} while (false); // eslint-disable-line no-constant-condition
+				vnode.dom = old.dom;
+				vnode.domSize = old.domSize;
+				vnode.instance = old.instance;
+				// One would think having the actual latest attributes would be ideal,
+				// but it doesn't let us properly diff based on our current internal
+				// representation. We have to save not only the old DOM info, but also
+				// the attributes used to create it, as we diff *that*, not against the
+				// DOM directly (with a few exceptions in `setAttr`). And, of course, we
+				// need to save the children and text as they are conceptually not
+				// unlike special "attributes" internally.
+				vnode.attrs = old.attrs;
+				vnode.children = old.children;
+				vnode.text = old.text;
+				return true
+			}
+
+			var currentDOM;
+
+			return function(dom, vnodes, redraw) {
+				if (!dom) { throw new TypeError("DOM element being rendered to does not exist.") }
+				if (currentDOM != null && dom.contains(currentDOM)) {
+					throw new TypeError("Node is currently being rendered to and thus is locked.")
+				}
+				var prevRedraw = currentRedraw;
+				var prevDOM = currentDOM;
+				var hooks = [];
+				var active = activeElement();
+				var namespace = dom.namespaceURI;
+
+				currentDOM = dom;
+				currentRedraw = typeof redraw === "function" ? redraw : undefined;
+				try {
+					// First time rendering into a node clears it out
+					if (dom.vnodes == null) { dom.textContent = ""; }
+					vnodes = Vnode.normalizeChildren(Array.isArray(vnodes) ? vnodes : [vnodes]);
+					updateNodes(dom, dom.vnodes, vnodes, hooks, null, namespace === "http://www.w3.org/1999/xhtml" ? undefined : namespace);
+					dom.vnodes = vnodes;
+					// `document.activeElement` can return null: https://html.spec.whatwg.org/multipage/interaction.html#dom-document-activeelement
+					if (active != null && activeElement() !== active && typeof active.focus === "function") { active.focus(); }
+					for (var i = 0; i < hooks.length; i++) { hooks[i](); }
+				} finally {
+					currentRedraw = prevRedraw;
+					currentDOM = prevDOM;
+				}
+			}
+		};
+		return render$1;
+	}
+
+	var render;
+	var hasRequiredRender;
+
+	function requireRender () {
+		if (hasRequiredRender) { return render; }
+		hasRequiredRender = 1;
+
+		render = requireRender$1()(typeof window !== "undefined" ? window : null);
+		return render;
+	}
+
+	var mountRedraw$1;
+	var hasRequiredMountRedraw$1;
+
+	function requireMountRedraw$1 () {
+		if (hasRequiredMountRedraw$1) { return mountRedraw$1; }
+		hasRequiredMountRedraw$1 = 1;
+
+		var Vnode = requireVnode();
+
+		mountRedraw$1 = function(render, schedule, console) {
+			var subscriptions = [];
+			var pending = false;
+			var offset = -1;
+
+			function sync() {
+				for (offset = 0; offset < subscriptions.length; offset += 2) {
+					try { render(subscriptions[offset], Vnode(subscriptions[offset + 1]), redraw); }
+					catch (e) { console.error(e); }
+				}
+				offset = -1;
+			}
+
+			function redraw() {
+				if (!pending) {
+					pending = true;
+					schedule(function() {
+						pending = false;
+						sync();
+					});
+				}
+			}
+
+			redraw.sync = sync;
+
+			function mount(root, component) {
+				if (component != null && component.view == null && typeof component !== "function") {
+					throw new TypeError("m.mount expects a component, not a vnode.")
+				}
+
+				var index = subscriptions.indexOf(root);
+				if (index >= 0) {
+					subscriptions.splice(index, 2);
+					if (index <= offset) { offset -= 2; }
+					render(root, []);
+				}
+
+				if (component != null) {
+					subscriptions.push(root, component);
+					render(root, Vnode(component), redraw);
+				}
+			}
+
+			return {mount: mount, redraw: redraw}
+		};
+		return mountRedraw$1;
+	}
+
+	var mountRedraw;
+	var hasRequiredMountRedraw;
+
+	function requireMountRedraw () {
+		if (hasRequiredMountRedraw) { return mountRedraw; }
+		hasRequiredMountRedraw = 1;
+
+		var render = requireRender();
+
+		mountRedraw = requireMountRedraw$1()(render, typeof requestAnimationFrame !== "undefined" ? requestAnimationFrame : null, typeof console !== "undefined" ? console : null);
+		return mountRedraw;
+	}
+
+	var build$1;
+	var hasRequiredBuild$1;
+
+	function requireBuild$1 () {
+		if (hasRequiredBuild$1) { return build$1; }
+		hasRequiredBuild$1 = 1;
+
+		build$1 = function(object) {
+			if (Object.prototype.toString.call(object) !== "[object Object]") { return "" }
+
+			var args = [];
+			for (var key in object) {
+				destructure(key, object[key]);
+			}
+
+			return args.join("&")
+
+			function destructure(key, value) {
+				if (Array.isArray(value)) {
+					for (var i = 0; i < value.length; i++) {
+						destructure(key + "[" + i + "]", value[i]);
+					}
+				}
+				else if (Object.prototype.toString.call(value) === "[object Object]") {
+					for (var i in value) {
+						destructure(key + "[" + i + "]", value[i]);
+					}
+				}
+				else { args.push(encodeURIComponent(key) + (value != null && value !== "" ? "=" + encodeURIComponent(value) : "")); }
+			}
+		};
+		return build$1;
+	}
+
+	var assign;
+	var hasRequiredAssign;
+
+	function requireAssign () {
+		if (hasRequiredAssign) { return assign; }
+		hasRequiredAssign = 1;
+
+		var hasOwn = requireHasOwn();
+
+		assign = Object.assign || function(target, source) {
+			for (var key in source) {
+				if (hasOwn.call(source, key)) { target[key] = source[key]; }
+			}
+		};
+		return assign;
+	}
+
+	var build;
+	var hasRequiredBuild;
+
+	function requireBuild () {
+		if (hasRequiredBuild) { return build; }
+		hasRequiredBuild = 1;
+
+		var buildQueryString = requireBuild$1();
+		var assign = requireAssign();
+
+		// Returns `path` from `template` + `params`
+		build = function(template, params) {
+			if ((/:([^\/\.-]+)(\.{3})?:/).test(template)) {
+				throw new SyntaxError("Template parameter names must be separated by either a '/', '-', or '.'.")
+			}
+			if (params == null) { return template }
+			var queryIndex = template.indexOf("?");
+			var hashIndex = template.indexOf("#");
+			var queryEnd = hashIndex < 0 ? template.length : hashIndex;
+			var pathEnd = queryIndex < 0 ? queryEnd : queryIndex;
+			var path = template.slice(0, pathEnd);
+			var query = {};
+
+			assign(query, params);
+
+			var resolved = path.replace(/:([^\/\.-]+)(\.{3})?/g, function(m, key, variadic) {
+				delete query[key];
+				// If no such parameter exists, don't interpolate it.
+				if (params[key] == null) { return m }
+				// Escape normal parameters, but not variadic ones.
+				return variadic ? params[key] : encodeURIComponent(String(params[key]))
+			});
+
+			// In case the template substitution adds new query/hash parameters.
+			var newQueryIndex = resolved.indexOf("?");
+			var newHashIndex = resolved.indexOf("#");
+			var newQueryEnd = newHashIndex < 0 ? resolved.length : newHashIndex;
+			var newPathEnd = newQueryIndex < 0 ? newQueryEnd : newQueryIndex;
+			var result = resolved.slice(0, newPathEnd);
+
+			if (queryIndex >= 0) { result += template.slice(queryIndex, queryEnd); }
+			if (newQueryIndex >= 0) { result += (queryIndex < 0 ? "?" : "&") + resolved.slice(newQueryIndex, newQueryEnd); }
+			var querystring = buildQueryString(query);
+			if (querystring) { result += (queryIndex < 0 && newQueryIndex < 0 ? "?" : "&") + querystring; }
+			if (hashIndex >= 0) { result += template.slice(hashIndex); }
+			if (newHashIndex >= 0) { result += (hashIndex < 0 ? "" : "&") + resolved.slice(newHashIndex); }
+			return result
+		};
+		return build;
+	}
+
+	var request$1;
+	var hasRequiredRequest$1;
+
+	function requireRequest$1 () {
+		if (hasRequiredRequest$1) { return request$1; }
+		hasRequiredRequest$1 = 1;
+
+		var buildPathname = requireBuild();
+		var hasOwn = requireHasOwn();
+
+		request$1 = function($window, Promise, oncompletion) {
+			var callbackCount = 0;
+
+			function PromiseProxy(executor) {
+				return new Promise(executor)
+			}
+
+			// In case the global Promise is some userland library's where they rely on
+			// `foo instanceof this.constructor`, `this.constructor.resolve(value)`, or
+			// similar. Let's *not* break them.
+			PromiseProxy.prototype = Promise.prototype;
+			PromiseProxy.__proto__ = Promise; // eslint-disable-line no-proto
+
+			function makeRequest(factory) {
+				return function(url, args) {
+					if (typeof url !== "string") { args = url; url = url.url; }
+					else if (args == null) { args = {}; }
+					var promise = new Promise(function(resolve, reject) {
+						factory(buildPathname(url, args.params), args, function (data) {
+							if (typeof args.type === "function") {
+								if (Array.isArray(data)) {
+									for (var i = 0; i < data.length; i++) {
+										data[i] = new args.type(data[i]);
+									}
+								}
+								else { data = new args.type(data); }
+							}
+							resolve(data);
+						}, reject);
+					});
+					if (args.background === true) { return promise }
+					var count = 0;
+					function complete() {
+						if (--count === 0 && typeof oncompletion === "function") { oncompletion(); }
+					}
+
+					return wrap(promise)
+
+					function wrap(promise) {
+						var then = promise.then;
+						// Set the constructor, so engines know to not await or resolve
+						// this as a native promise. At the time of writing, this is
+						// only necessary for V8, but their behavior is the correct
+						// behavior per spec. See this spec issue for more details:
+						// https://github.com/tc39/ecma262/issues/1577. Also, see the
+						// corresponding comment in `request/tests/test-request.js` for
+						// a bit more background on the issue at hand.
+						promise.constructor = PromiseProxy;
+						promise.then = function() {
+							count++;
+							var next = then.apply(promise, arguments);
+							next.then(complete, function(e) {
+								complete();
+								if (count === 0) { throw e }
+							});
+							return wrap(next)
+						};
+						return promise
+					}
+				}
+			}
+
+			function hasHeader(args, name) {
+				for (var key in args.headers) {
+					if (hasOwn.call(args.headers, key) && key.toLowerCase() === name) { return true }
+				}
+				return false
+			}
+
+			return {
+				request: makeRequest(function(url, args, resolve, reject) {
+					var method = args.method != null ? args.method.toUpperCase() : "GET";
+					var body = args.body;
+					var assumeJSON = (args.serialize == null || args.serialize === JSON.serialize) && !(body instanceof $window.FormData || body instanceof $window.URLSearchParams);
+					var responseType = args.responseType || (typeof args.extract === "function" ? "" : "json");
+
+					var xhr = new $window.XMLHttpRequest(), aborted = false, isTimeout = false;
+					var original = xhr, replacedAbort;
+					var abort = xhr.abort;
+
+					xhr.abort = function() {
+						aborted = true;
+						abort.call(this);
+					};
+
+					xhr.open(method, url, args.async !== false, typeof args.user === "string" ? args.user : undefined, typeof args.password === "string" ? args.password : undefined);
+
+					if (assumeJSON && body != null && !hasHeader(args, "content-type")) {
+						xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+					}
+					if (typeof args.deserialize !== "function" && !hasHeader(args, "accept")) {
+						xhr.setRequestHeader("Accept", "application/json, text/*");
+					}
+					if (args.withCredentials) { xhr.withCredentials = args.withCredentials; }
+					if (args.timeout) { xhr.timeout = args.timeout; }
+					xhr.responseType = responseType;
+
+					for (var key in args.headers) {
+						if (hasOwn.call(args.headers, key)) {
+							xhr.setRequestHeader(key, args.headers[key]);
+						}
+					}
+
+					xhr.onreadystatechange = function(ev) {
+						// Don't throw errors on xhr.abort().
+						if (aborted) { return }
+
+						if (ev.target.readyState === 4) {
+							try {
+								var success = (ev.target.status >= 200 && ev.target.status < 300) || ev.target.status === 304 || (/^file:\/\//i).test(url);
+								// When the response type isn't "" or "text",
+								// `xhr.responseText` is the wrong thing to use.
+								// Browsers do the right thing and throw here, and we
+								// should honor that and do the right thing by
+								// preferring `xhr.response` where possible/practical.
+								var response = ev.target.response, message;
+
+								if (responseType === "json") {
+									// For IE and Edge, which don't implement
+									// `responseType: "json"`.
+									if (!ev.target.responseType && typeof args.extract !== "function") {
+										// Handle no-content which will not parse.
+										try { response = JSON.parse(ev.target.responseText); }
+										catch (e) { response = null; }
+									}
+								} else if (!responseType || responseType === "text") {
+									// Only use this default if it's text. If a parsed
+									// document is needed on old IE and friends (all
+									// unsupported), the user should use a custom
+									// `config` instead. They're already using this at
+									// their own risk.
+									if (response == null) { response = ev.target.responseText; }
+								}
+
+								if (typeof args.extract === "function") {
+									response = args.extract(ev.target, args);
+									success = true;
+								} else if (typeof args.deserialize === "function") {
+									response = args.deserialize(response);
+								}
+								if (success) { resolve(response); }
+								else {
+									var completeErrorResponse = function() {
+										try { message = ev.target.responseText; }
+										catch (e) { message = response; }
+										var error = new Error(message);
+										error.code = ev.target.status;
+										error.response = response;
+										reject(error);
+									};
+
+									if (xhr.status === 0) {
+										// Use setTimeout to push this code block onto the event queue
+										// This allows `xhr.ontimeout` to run in the case that there is a timeout
+										// Without this setTimeout, `xhr.ontimeout` doesn't have a chance to reject
+										// as `xhr.onreadystatechange` will run before it
+										setTimeout(function() {
+											if (isTimeout) { return }
+											completeErrorResponse();
+										});
+									} else { completeErrorResponse(); }
+								}
+							}
+							catch (e$1) {
+								reject(e$1);
+							}
+						}
+					};
+
+					xhr.ontimeout = function (ev) {
+						isTimeout = true;
+						var error = new Error("Request timed out");
+						error.code = ev.target.status;
+						reject(error);
+					};
+
+					if (typeof args.config === "function") {
+						xhr = args.config(xhr, args, url) || xhr;
+
+						// Propagate the `abort` to any replacement XHR as well.
+						if (xhr !== original) {
+							replacedAbort = xhr.abort;
+							xhr.abort = function() {
+								aborted = true;
+								replacedAbort.call(this);
+							};
+						}
+					}
+
+					if (body == null) { xhr.send(); }
+					else if (typeof args.serialize === "function") { xhr.send(args.serialize(body)); }
+					else if (body instanceof $window.FormData || body instanceof $window.URLSearchParams) { xhr.send(body); }
+					else { xhr.send(JSON.stringify(body)); }
+				}),
+				jsonp: makeRequest(function(url, args, resolve, reject) {
+					var callbackName = args.callbackName || "_mithril_" + Math.round(Math.random() * 1e16) + "_" + callbackCount++;
+					var script = $window.document.createElement("script");
+					$window[callbackName] = function(data) {
+						delete $window[callbackName];
+						script.parentNode.removeChild(script);
+						resolve(data);
+					};
+					script.onerror = function() {
+						delete $window[callbackName];
+						script.parentNode.removeChild(script);
+						reject(new Error("JSONP request failed"));
+					};
+					script.src = url + (url.indexOf("?") < 0 ? "?" : "&") +
+						encodeURIComponent(args.callbackKey || "callback") + "=" +
+						encodeURIComponent(callbackName);
+					$window.document.documentElement.appendChild(script);
+				}),
+			}
+		};
+		return request$1;
+	}
+
+	var request;
+	var hasRequiredRequest;
+
+	function requireRequest () {
+		if (hasRequiredRequest) { return request; }
+		hasRequiredRequest = 1;
+
+		var PromisePolyfill = requirePromise();
+		var mountRedraw = requireMountRedraw();
+
+		request = requireRequest$1()(typeof window !== "undefined" ? window : null, PromisePolyfill, mountRedraw.redraw);
+		return request;
+	}
+
+	var parse$1;
+	var hasRequiredParse$1;
+
+	function requireParse$1 () {
+		if (hasRequiredParse$1) { return parse$1; }
+		hasRequiredParse$1 = 1;
+
+		function decodeURIComponentSave(str) {
+			try {
+				return decodeURIComponent(str)
+			} catch(err) {
+				return str
+			}
+		}
+
+		parse$1 = function(string) {
+			if (string === "" || string == null) { return {} }
+			if (string.charAt(0) === "?") { string = string.slice(1); }
+
+			var entries = string.split("&"), counters = {}, data = {};
+			for (var i = 0; i < entries.length; i++) {
+				var entry = entries[i].split("=");
+				var key = decodeURIComponentSave(entry[0]);
+				var value = entry.length === 2 ? decodeURIComponentSave(entry[1]) : "";
+
+				if (value === "true") { value = true; }
+				else if (value === "false") { value = false; }
+
+				var levels = key.split(/\]\[?|\[/);
+				var cursor = data;
+				if (key.indexOf("[") > -1) { levels.pop(); }
+				for (var j = 0; j < levels.length; j++) {
+					var level = levels[j], nextLevel = levels[j + 1];
+					var isNumber = nextLevel == "" || !isNaN(parseInt(nextLevel, 10));
+					if (level === "") {
+						var key = levels.slice(0, j).join();
+						if (counters[key] == null) {
+							counters[key] = Array.isArray(cursor) ? cursor.length : 0;
+						}
+						level = counters[key]++;
+					}
+					// Disallow direct prototype pollution
+					else if (level === "__proto__") { break }
+					if (j === levels.length - 1) { cursor[level] = value; }
+					else {
+						// Read own properties exclusively to disallow indirect
+						// prototype pollution
+						var desc = Object.getOwnPropertyDescriptor(cursor, level);
+						if (desc != null) { desc = desc.value; }
+						if (desc == null) { cursor[level] = desc = isNumber ? [] : {}; }
+						cursor = desc;
+					}
+				}
+			}
+			return data
+		};
+		return parse$1;
+	}
+
+	var parse;
+	var hasRequiredParse;
+
+	function requireParse () {
+		if (hasRequiredParse) { return parse; }
+		hasRequiredParse = 1;
+
+		var parseQueryString = requireParse$1();
+
+		// Returns `{path, params}` from `url`
+		parse = function(url) {
+			var queryIndex = url.indexOf("?");
+			var hashIndex = url.indexOf("#");
+			var queryEnd = hashIndex < 0 ? url.length : hashIndex;
+			var pathEnd = queryIndex < 0 ? queryEnd : queryIndex;
+			var path = url.slice(0, pathEnd).replace(/\/{2,}/g, "/");
+
+			if (!path) { path = "/"; }
+			else {
+				if (path[0] !== "/") { path = "/" + path; }
+				if (path.length > 1 && path[path.length - 1] === "/") { path = path.slice(0, -1); }
+			}
+			return {
+				path: path,
+				params: queryIndex < 0
+					? {}
+					: parseQueryString(url.slice(queryIndex + 1, queryEnd)),
+			}
+		};
+		return parse;
+	}
+
+	var compileTemplate;
+	var hasRequiredCompileTemplate;
+
+	function requireCompileTemplate () {
+		if (hasRequiredCompileTemplate) { return compileTemplate; }
+		hasRequiredCompileTemplate = 1;
+
+		var parsePathname = requireParse();
+
+		// Compiles a template into a function that takes a resolved path (without query
+		// strings) and returns an object containing the template parameters with their
+		// parsed values. This expects the input of the compiled template to be the
+		// output of `parsePathname`. Note that it does *not* remove query parameters
+		// specified in the template.
+		compileTemplate = function(template) {
+			var templateData = parsePathname(template);
+			var templateKeys = Object.keys(templateData.params);
+			var keys = [];
+			var regexp = new RegExp("^" + templateData.path.replace(
+				// I escape literal text so people can use things like `:file.:ext` or
+				// `:lang-:locale` in routes. This is all merged into one pass so I
+				// don't also accidentally escape `-` and make it harder to detect it to
+				// ban it from template parameters.
+				/:([^\/.-]+)(\.{3}|\.(?!\.)|-)?|[\\^$*+.()|\[\]{}]/g,
+				function(m, key, extra) {
+					if (key == null) { return "\\" + m }
+					keys.push({k: key, r: extra === "..."});
+					if (extra === "...") { return "(.*)" }
+					if (extra === ".") { return "([^/]+)\\." }
+					return "([^/]+)" + (extra || "")
+				}
+			) + "$");
+			return function(data) {
+				// First, check the params. Usually, there isn't any, and it's just
+				// checking a static set.
+				for (var i = 0; i < templateKeys.length; i++) {
+					if (templateData.params[templateKeys[i]] !== data.params[templateKeys[i]]) { return false }
+				}
+				// If no interpolations exist, let's skip all the ceremony
+				if (!keys.length) { return regexp.test(data.path) }
+				var values = regexp.exec(data.path);
+				if (values == null) { return false }
+				for (var i = 0; i < keys.length; i++) {
+					data.params[keys[i].k] = keys[i].r ? values[i + 1] : decodeURIComponent(values[i + 1]);
+				}
+				return true
+			}
+		};
+		return compileTemplate;
+	}
+
+	var censor;
+	var hasRequiredCensor;
+
+	function requireCensor () {
+		if (hasRequiredCensor) { return censor; }
+		hasRequiredCensor = 1;
+
+		// Note: this is mildly perf-sensitive.
+		//
+		// It does *not* use `delete` - dynamic `delete`s usually cause objects to bail
+		// out into dictionary mode and just generally cause a bunch of optimization
+		// issues within engines.
+		//
+		// Ideally, I would've preferred to do this, if it weren't for the optimization
+		// issues:
+		//
+		// ```js
+		// const hasOwn = require("./hasOwn")
+		// const magic = [
+		//     "key", "oninit", "oncreate", "onbeforeupdate", "onupdate",
+		//     "onbeforeremove", "onremove",
+		// ]
+		// module.exports = (attrs, extras) => {
+		//     const result = Object.assign(Object.create(null), attrs)
+		//     for (const key of magic) delete result[key]
+		//     if (extras != null) for (const key of extras) delete result[key]
+		//     return result
+		// }
+		// ```
+
+		var hasOwn = requireHasOwn();
+		// Words in RegExp literals are sometimes mangled incorrectly by the internal bundler, so use RegExp().
+		var magic = new RegExp("^(?:key|oninit|oncreate|onbeforeupdate|onupdate|onbeforeremove|onremove)$");
+
+		censor = function(attrs, extras) {
+			var result = {};
+
+			if (extras != null) {
+				for (var key in attrs) {
+					if (hasOwn.call(attrs, key) && !magic.test(key) && extras.indexOf(key) < 0) {
+						result[key] = attrs[key];
+					}
+				}
+			} else {
+				for (var key in attrs) {
+					if (hasOwn.call(attrs, key) && !magic.test(key)) {
+						result[key] = attrs[key];
+					}
+				}
+			}
+
+			return result
+		};
+		return censor;
+	}
+
+	var router;
+	var hasRequiredRouter;
+
+	function requireRouter () {
+		if (hasRequiredRouter) { return router; }
+		hasRequiredRouter = 1;
+
+		var Vnode = requireVnode();
+		var m = requireHyperscript$1();
+		var Promise = requirePromise();
+
+		var buildPathname = requireBuild();
+		var parsePathname = requireParse();
+		var compileTemplate = requireCompileTemplate();
+		var assign = requireAssign();
+		var censor = requireCensor();
+
+		var sentinel = {};
+
+		function decodeURIComponentSave(component) {
+			try {
+				return decodeURIComponent(component)
+			} catch(e) {
+				return component
+			}
+		}
+
+		router = function($window, mountRedraw) {
+			var callAsync = $window == null
+				// In case Mithril.js' loaded globally without the DOM, let's not break
+				? null
+				: typeof $window.setImmediate === "function" ? $window.setImmediate : $window.setTimeout;
+			var p = Promise.resolve();
+
+			var scheduled = false;
+
+			// state === 0: init
+			// state === 1: scheduled
+			// state === 2: done
+			var ready = false;
+			var state = 0;
+
+			var compiled, fallbackRoute;
+
+			var currentResolver = sentinel, component, attrs, currentPath, lastUpdate;
+
+			var RouterRoot = {
+				onbeforeupdate: function() {
+					state = state ? 2 : 1;
+					return !(!state || sentinel === currentResolver)
+				},
+				onremove: function() {
+					$window.removeEventListener("popstate", fireAsync, false);
+					$window.removeEventListener("hashchange", resolveRoute, false);
+				},
+				view: function() {
+					if (!state || sentinel === currentResolver) { return }
+					// Wrap in a fragment to preserve existing key semantics
+					var vnode = [Vnode(component, attrs.key, attrs)];
+					if (currentResolver) { vnode = currentResolver.render(vnode[0]); }
+					return vnode
+				},
+			};
+
+			var SKIP = route.SKIP = {};
+
+			function resolveRoute() {
+				scheduled = false;
+				// Consider the pathname holistically. The prefix might even be invalid,
+				// but that's not our problem.
+				var prefix = $window.location.hash;
+				if (route.prefix[0] !== "#") {
+					prefix = $window.location.search + prefix;
+					if (route.prefix[0] !== "?") {
+						prefix = $window.location.pathname + prefix;
+						if (prefix[0] !== "/") { prefix = "/" + prefix; }
+					}
+				}
+				// This seemingly useless `.concat()` speeds up the tests quite a bit,
+				// since the representation is consistently a relatively poorly
+				// optimized cons string.
+				var path = prefix.concat()
+					.replace(/(?:%[a-f89][a-f0-9])+/gim, decodeURIComponentSave)
+					.slice(route.prefix.length);
+				var data = parsePathname(path);
+
+				assign(data.params, $window.history.state);
+
+				function reject(e) {
+					console.error(e);
+					setPath(fallbackRoute, null, {replace: true});
+				}
+
+				loop(0);
+				function loop(i) {
+					// state === 0: init
+					// state === 1: scheduled
+					// state === 2: done
+					for (; i < compiled.length; i++) {
+						if (compiled[i].check(data)) {
+							var payload = compiled[i].component;
+							var matchedRoute = compiled[i].route;
+							var localComp = payload;
+							var update = lastUpdate = function(comp) {
+								if (update !== lastUpdate) { return }
+								if (comp === SKIP) { return loop(i + 1) }
+								component = comp != null && (typeof comp.view === "function" || typeof comp === "function")? comp : "div";
+								attrs = data.params, currentPath = path, lastUpdate = null;
+								currentResolver = payload.render ? payload : null;
+								if (state === 2) { mountRedraw.redraw(); }
+								else {
+									state = 2;
+									mountRedraw.redraw.sync();
+								}
+							};
+							// There's no understating how much I *wish* I could
+							// use `async`/`await` here...
+							if (payload.view || typeof payload === "function") {
+								payload = {};
+								update(localComp);
+							}
+							else if (payload.onmatch) {
+								p.then(function () {
+									return payload.onmatch(data.params, path, matchedRoute)
+								}).then(update, path === fallbackRoute ? null : reject);
+							}
+							else { update("div"); }
+							return
+						}
+					}
+
+					if (path === fallbackRoute) {
+						throw new Error("Could not resolve default route " + fallbackRoute + ".")
+					}
+					setPath(fallbackRoute, null, {replace: true});
+				}
+			}
+
+			// Set it unconditionally so `m.route.set` and `m.route.Link` both work,
+			// even if neither `pushState` nor `hashchange` are supported. It's
+			// cleared if `hashchange` is used, since that makes it automatically
+			// async.
+			function fireAsync() {
+				if (!scheduled) {
+					scheduled = true;
+					// TODO: just do `mountRedraw.redraw()` here and elide the timer
+					// dependency. Note that this will muck with tests a *lot*, so it's
+					// not as easy of a change as it sounds.
+					callAsync(resolveRoute);
+				}
+			}
+
+			function setPath(path, data, options) {
+				path = buildPathname(path, data);
+				if (ready) {
+					fireAsync();
+					var state = options ? options.state : null;
+					var title = options ? options.title : null;
+					if (options && options.replace) { $window.history.replaceState(state, title, route.prefix + path); }
+					else { $window.history.pushState(state, title, route.prefix + path); }
+				}
+				else {
+					$window.location.href = route.prefix + path;
+				}
+			}
+
+			function route(root, defaultRoute, routes) {
+				if (!root) { throw new TypeError("DOM element being rendered to does not exist.") }
+
+				compiled = Object.keys(routes).map(function(route) {
+					if (route[0] !== "/") { throw new SyntaxError("Routes must start with a '/'.") }
+					if ((/:([^\/\.-]+)(\.{3})?:/).test(route)) {
+						throw new SyntaxError("Route parameter names must be separated with either '/', '.', or '-'.")
+					}
+					return {
+						route: route,
+						component: routes[route],
+						check: compileTemplate(route),
+					}
+				});
+				fallbackRoute = defaultRoute;
+				if (defaultRoute != null) {
+					var defaultData = parsePathname(defaultRoute);
+
+					if (!compiled.some(function (i) { return i.check(defaultData) })) {
+						throw new ReferenceError("Default route doesn't match any known routes.")
+					}
+				}
+
+				if (typeof $window.history.pushState === "function") {
+					$window.addEventListener("popstate", fireAsync, false);
+				} else if (route.prefix[0] === "#") {
+					$window.addEventListener("hashchange", resolveRoute, false);
+				}
+
+				ready = true;
+				mountRedraw.mount(root, RouterRoot);
+				resolveRoute();
+			}
+			route.set = function(path, data, options) {
+				if (lastUpdate != null) {
+					options = options || {};
+					options.replace = true;
+				}
+				lastUpdate = null;
+				setPath(path, data, options);
+			};
+			route.get = function() {return currentPath};
+			route.prefix = "#!";
+			route.Link = {
+				view: function(vnode) {
+					// Omit the used parameters from the rendered element - they are
+					// internal. Also, censor the various lifecycle methods.
+					//
+					// We don't strip the other parameters because for convenience we
+					// let them be specified in the selector as well.
+					var child = m(
+						vnode.attrs.selector || "a",
+						censor(vnode.attrs, ["options", "params", "selector", "onclick"]),
+						vnode.children
+					);
+					var options, onclick, href;
+
+					// Let's provide a *right* way to disable a route link, rather than
+					// letting people screw up accessibility on accident.
+					//
+					// The attribute is coerced so users don't get surprised over
+					// `disabled: 0` resulting in a button that's somehow routable
+					// despite being visibly disabled.
+					if (child.attrs.disabled = Boolean(child.attrs.disabled)) {
+						child.attrs.href = null;
+						child.attrs["aria-disabled"] = "true";
+						// If you *really* do want add `onclick` on a disabled link, use
+						// an `oncreate` hook to add it.
+					} else {
+						options = vnode.attrs.options;
+						onclick = vnode.attrs.onclick;
+						// Easier to build it now to keep it isomorphic.
+						href = buildPathname(child.attrs.href, vnode.attrs.params);
+						child.attrs.href = route.prefix + href;
+						child.attrs.onclick = function(e) {
+							var result;
+							if (typeof onclick === "function") {
+								result = onclick.call(e.currentTarget, e);
+							} else if (onclick == null || typeof onclick !== "object") ; else if (typeof onclick.handleEvent === "function") {
+								onclick.handleEvent(e);
+							}
+
+							// Adapted from React Router's implementation:
+							// https://github.com/ReactTraining/react-router/blob/520a0acd48ae1b066eb0b07d6d4d1790a1d02482/packages/react-router-dom/modules/Link.js
+							//
+							// Try to be flexible and intuitive in how we handle links.
+							// Fun fact: links aren't as obvious to get right as you
+							// would expect. There's a lot more valid ways to click a
+							// link than this, and one might want to not simply click a
+							// link, but right click or command-click it to copy the
+							// link target, etc. Nope, this isn't just for blind people.
+							if (
+								// Skip if `onclick` prevented default
+								result !== false && !e.defaultPrevented &&
+								// Ignore everything but left clicks
+								(e.button === 0 || e.which === 0 || e.which === 1) &&
+								// Let the browser handle `target=_blank`, etc.
+								(!e.currentTarget.target || e.currentTarget.target === "_self") &&
+								// No modifier keys
+								!e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey
+							) {
+								e.preventDefault();
+								e.redraw = false;
+								route.set(href, null, options);
+							}
+						};
+					}
+					return child
+				},
+			};
+			route.param = function(key) {
+				return attrs && key != null ? attrs[key] : attrs
+			};
+
+			return route
+		};
+		return router;
+	}
+
+	var route;
+	var hasRequiredRoute;
+
+	function requireRoute () {
+		if (hasRequiredRoute) { return route; }
+		hasRequiredRoute = 1;
+
+		var mountRedraw = requireMountRedraw();
+
+		route = requireRouter()(typeof window !== "undefined" ? window : null, mountRedraw);
+		return route;
+	}
+
+	var mithril;
+	var hasRequiredMithril;
+
+	function requireMithril () {
+		if (hasRequiredMithril) { return mithril; }
+		hasRequiredMithril = 1;
+
+		var hyperscript = requireHyperscript();
+		var request = requireRequest();
+		var mountRedraw = requireMountRedraw();
+
+		var m = function m() { return hyperscript.apply(this, arguments) };
+		m.m = hyperscript;
+		m.trust = hyperscript.trust;
+		m.fragment = hyperscript.fragment;
+		m.Fragment = "[";
+		m.mount = mountRedraw.mount;
+		m.route = requireRoute();
+		m.render = requireRender();
+		m.redraw = mountRedraw.redraw;
+		m.request = request.request;
+		m.jsonp = request.jsonp;
+		m.parseQueryString = requireParse$1();
+		m.buildQueryString = requireBuild$1();
+		m.parsePathname = requireParse();
+		m.buildPathname = requireBuild();
+		m.vnode = requireVnode();
+		m.PromisePolyfill = requirePolyfill();
+		m.censor = requireCensor();
+
+		mithril = m;
+		return mithril;
+	}
+
+	var mithrilExports = requireMithril();
+	var m = /*@__PURE__*/getDefaultExportFromCjs(mithrilExports);
+
+	function state () { return ({
+	  companies: [],
+	  comp: {},
+
+	  projects: [],
+	  proj: {},
+
+	  times: [],
+	  time: {},
+	  checks: {},
+
+	  invoices: [],
+	  invo: {},
+
+	  classes: {
+	    button: 'px-3.5 pt-0.5 pb-1 bg-sky-600 text-white rounded-md',
+	    plus: 'flex justify-center items-end w-[30px] h-[30px] p-0 mt-1 ml-2.5 bg-sky-600 text-white rounded-md text-3xl'
+	  },
+
+	  loaded: false
+	}); }
+
+	var api = {
+	  req : function (method, url, opts) { return m.request(Object.assign({}, {method: method, url: url}, opts)); },
+	  get : function (url, opts) { return api.req('get',  url, opts); },
+	  post: function (url, opts) { return api.req('post', url, opts); },
+	  put : function (url, opts) { return api.req('put',  url, opts); },
+	  del : function (url, opts) { return api.req('del',  url, opts); }
+	};
+
+	function actions (S, A) {
+	  if ( A === void 0 ) A = {
+	  init: function () {
+	    S.loaded = false;
+	    return Promise.all([
+	      A.get('times'),
+	      A.get('companies'),
+	      A.get('projects'),
+	      A.get('invoices')
+	    ])
+	    .then(function () { return S.loaded = true; })
+	    .catch(console.log)
+	  },
+
+	  initChecks: function () { return S.checks = S.times.reduce(function (a,ref) {
+	    var id = ref.id;
+
+	    return (a[id] = false, a);
+	    }, {}); },
+
+	  get: function (table) { return api.get(`/api/${table}`)
+	    .then(function (res) { return S[table] = res; })
+	    .catch(console.log); },
+
+	  post: function (table, body) { return api.post(`/api/${table}`, {body: body})
+	    .then(function (res) {
+	      if (table !== 'pdf') {
+	        S[table].unshift(Object.assign({}, {id: res.id}, body));
+	      }
+	      else { return res }
+	    })
+	    .catch(console.log); },
+
+	  put: function (table, id, body) { return api.put(`/api/${table}/${id}`, {body: body})
+	    .then(function () {
+	      var idx = S[table].findIndex(function (x) { return x.id === id; });
+	      S[table][idx] = body;
+	    })
+	    .catch(console.log); },
+
+	  del: function (table, id) { return api.del(`/api/${table}/${id}`, {method: 'DELETE'})
+	    .then(function () {
+	      S[table] = S[table].filter(function (x) { return x.id !== id; });
+	    })
+	    .catch(console.log); }
+	};
+
+	  return A;
+	}
+
+	var layout = {
+	  view: function (ref) {
+	      var children = ref.children;
+	      var A = ref.attrs.A;
+
+	      return m('.layout', {class: 'relative w-screen h-screen'},
+	      m('div', {class: 'container mx-auto bg-sky-300'},
+	        m('div', {class: 'text-center py-4'},
+	          m('h1', {class: 'text-3xl font-bold tracking-widest'}, 'Timez')
+	        ),
+	        m('div', {class: 'bg-sky-950'},
+	          m('ul', {class: 'flex justify-start items-center gap-14 ml-14 pt-3 pb-3.5 list-none'},
+	            m('li', {class: 'inline-block text-white cursor-pointer select-none'},
+	              m('a', {
+	                onclick: function () {
+	                  A.initChecks();
+	                  m.route.set('/times');
+	                }
+	              }, 'Times')
+	            ),
+	            m('li', {class: 'inline-block text-white cursor-pointer select-none'},
+	              m('a', {onclick: function () { return m.route.set('/invoices'); }}, 'Invoices')
+	            ),
+	            m('li', {class: 'inline-block text-white cursor-pointer select-none'},
+	              m('a', {onclick: function () { return m.route.set('/config'); }}, 'Config')
+	            )
+	          )
+	        ),
+	        m('div', {class: 'bg-stone-100'},
+	          children
+	        )
+	      )
+	    );
+	}
+	};
+
+	var svgs = {
+	  edit: m('svg', {width: "26", height: "36", viewBox: "0 0 18 18", fill: "#0284c7", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {d: "M14.4714 4.86192C14.7317 5.12227 14.7317 5.54438 14.4714 5.80473L5.80472 14.4714C5.67969 14.5964 5.51013 14.6667 5.33331 14.6667L2.66665 14.6667C2.48983 14.6667 2.32026 14.5964 2.19524 14.4714C2.07022 14.3464 1.99998 14.1768 1.99998 14L1.99998 11.3333C1.99998 11.1565 2.07022 10.9869 2.19524 10.8619L10.8619 2.19525C11.1223 1.9349 11.5444 1.9349 11.8047 2.19525C12.0651 2.4556 12.0651 2.87771 11.8047 3.13806L3.33331 11.6095L3.33331 13.3333L5.05717 13.3333L13.5286 4.86192C13.7889 4.60157 14.211 4.60157 14.4714 4.86192Z"}),
+	    m('path', {d: "M10.8619 2.19525C11.1223 1.9349 11.5444 1.9349 11.8047 2.19525L14.4714 4.86192C14.7317 5.12227 14.7317 5.54438 14.4714 5.80473C14.211 6.06508 13.7889 6.06508 13.5286 5.80473L10.8619 3.13806C10.6016 2.87771 10.6016 2.4556 10.8619 2.19525Z"}),
+	    m('path', {d: "M11.5286 7.80473L8.86194 5.13806L9.80475 4.19525L12.4714 6.86192L11.5286 7.80473Z"})
+	  ),
+
+	  copy: m('svg', {width: "36", height: "36", viewBox: "0 0 100 100", fill: "none", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {
+	      d: "M66.4,71.1h-30c-1.7,0-3-1.3-3-3v-34c0-1.7,1.3-3,3-3h30c1.7,0,3,1.3,3,3v34C69.4,69.7,68,71.1,66.4,71.1z M37.4,67.1h28  v-32h-28V67.1z",
+	      fill: "#000"
+	    }),
+	    m('path', {
+	      d: "M73.4,64.1c-1.1,0-2-0.9-2-2v-33h-29c-1.1,0-2-0.9-2-2s0.9-2,2-2h29.6c1.6,0,3.4,1.2,3.4,3v34  C75.4,63.2,74.5,64.1,73.4,64.1z M71.9,29.1L71.9,29.1L71.9,29.1z",
+	      fill: "#000"
+	    })
+	  ),
+
+	  pdf: m('svg', {width: "22", height: "22", viewBox: "0 0 1000 1000", fill: "none", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {
+	      d: "M988.6,636c-1.1-8.1-7.5-18-14.4-24.8l-0.1,0c-19.6-19.3-63-29.6-129.1-30.4c-44.7-0.5-98.6,3.5-155.3,11.4c-25.4-14.7-51.5-30.5-72-49.7c-55.2-51.5-101.3-123.1-130-201.8c1.9-7.3,3.4-13.8,5-20.4c0,0,31.1-176.6,22.9-236.4c-1.1-8.2-1.8-10.6-4-17l-2.7-6.9c-8.5-19.5-25-40.2-51.1-39L442,20.5c-29,0-52.7,14.8-58.9,37C364.3,127,383.8,231,419,365.7l-9,21.9c-25.3,61.6-56.9,123.5-84.8,178.3l-3.6,7.1c-29.4,57.5-56,106.2-80.1,147.6l-24.9,13.2c-1.8,1-44.5,23.6-54.6,29.6c-85,50.8-141.4,108.5-150.7,154.2c-3,14.6-0.8,33.3,14.4,41.9l24.1,12.2c10.5,5.2,21.5,7.9,32.8,7.9c60.6,0,130.9-75.5,227.8-244.6c111.8-36.4,239.2-66.7,350.8-83.4c85,47.9,189.7,81.2,255.7,81.2c11.7,0,21.8-1.1,30-3.3c12.7-3.4,23.3-10.6,29.9-20.4C989.5,689.8,992.1,663.2,988.6,636z M69.2,933.6c11.1-30.2,54.8-90,119.5-142.9c4-3.3,14-12.7,23.3-21.4C144.3,877.2,99,920.1,69.2,933.6z M452.2,51.7c19.5,0,30.6,49.1,31.5,95.1c0.9,46-9.8,78.3-23.2,102.2c-11.1-35.4-16.4-91.2-16.4-127.6C444.1,121.4,443.2,51.7,452.2,51.7z M338,680.2L338,680.2c13.5-24.3,27.7-49.9,42.1-77c35.1-66.5,57.4-118.5,73.9-161.3c32.9,59.9,73.8,110.7,122,151.5c6,5.1,12.3,10.2,19,15.3C497.1,628,412.5,651.6,338,680.2z M955.2,674.7L955.2,674.7c-5.9,3.7-23,5.8-34,5.8c-35.4,0-79.3-16.2-140.8-42.6c23.7-1.7,45.3-2.7,64.7-2.7c35.6,0,46.1-0.1,80.9,8.8C960.8,652.9,961.2,670.9,955.2,674.7z",
+	      fill: "#ff0000"
+	    })
+	  ),
+
+	  eye: m('svg', {width: "28", height: "28", viewBox: "0 0 512 512", fill: "none", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {
+	      d: "m494.8,241.4l-50.6-49.4c-50.1-48.9-116.9-75.8-188.2-75.8s-138.1,26.9-188.2,75.8l-50.6,49.4c-11.3,12.3-4.3,25.4 0,29.2l50.6,49.4c50.1,48.9 116.9,75.8 188.2,75.8s138.1-26.9 188.2-75.8l50.6-49.4c4-3.8 11.7-16.4 0-29.2zm-238.8,84.4c-38.5,0-69.8-31.3-69.8-69.8 0-38.5 31.3-69.8 69.8-69.8 38.5,0 69.8,31.3 69.8,69.8 0,38.5-31.3,69.8-69.8,69.8zm-195.3-69.8l35.7-34.8c27-26.4 59.8-45.2 95.7-55.4-28.2,20.1-46.6,53-46.6,90.1 0,37.1 18.4,70.1 46.6,90.1-35.9-10.2-68.7-29-95.7-55.3l-35.7-34.7zm355,34.8c-27,26.3-59.8,45.1-95.7,55.3 28.2-20.1 46.6-53 46.6-90.1 0-37.2-18.4-70.1-46.6-90.1 35.9,10.2 68.7,29 95.7,55.4l35.6,34.8-35.6,34.7z",
+	      fill: "#000"
+	    })
+	  ),
+
+	  crossred: m('svg', {width: "32", height: "32", viewBox: "0 0 19 19", fill: "none", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {
+	      d: "M9.49996 8.38058L13.4187 4.46183L14.5381 5.58125L10.6194 9.5L14.5381 13.4188L13.4187 14.5382L9.49996 10.6194L5.58121 14.5382L4.46179 13.4188L8.38054 9.5L4.46179 5.58125L5.58121 4.46183L9.49996 8.38058Z",
+	      fill: "#EB5757"
+	    })
+	  ),
+
+	  crossredsm: m('svg', {width: "32", height: "32", viewBox: "0 0 23 23", fill: "none", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {
+	      d: "M9.49996 8.38058L13.4187 4.46183L14.5381 5.58125L10.6194 9.5L14.5381 13.4188L13.4187 14.5382L9.49996 10.6194L5.58121 14.5382L4.46179 13.4188L8.38054 9.5L4.46179 5.58125L5.58121 4.46183L9.49996 8.38058Z",
+	      fill: "#EB5757"
+	    })
+	  ),
+
+	  check: m('svg', {width: "32", height: "32", viewBox: "0 0 23 23", fill: "none", xmlns: "http://www.w3.org/2000/svg"},
+	    m('path', {
+	      d: "M7.54058 13.9785L3.62183 10.0597L4.74124 8.94029L7.54176 11.7376L7.54058 11.7388L14.2579 5.02154L15.3773 6.14096L8.65999 12.859L7.54137 13.9777L7.54058 13.9785Z",
+	      fill: "#219653"
+	    })
+	  )
+	};
+
+	function objectWithoutProperties$3 (obj, exclude) { var target = {}; for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj, k) && exclude.indexOf(k) === -1) target[k] = obj[k]; return target; }
+
+	function times (ref) {
+	  var ref_attrs = ref.attrs;
+	  var S = ref_attrs.S;
+	  var A = ref_attrs.A;
+
+	  if (!S.loaded) {
+	    A.init()
+	    .then(A.initChecks);
+	  }
+
+	  var curs = {USD: '$', EUR: '€'};
+	  var proj = function (id, prop) {
+	    var p = S.projects.find(function (proj) { return proj.id === id; });
+	    return p ? p[prop] : ''
+	  };
+
+	  var getdate = function () {
+	    var now = new Date(Date.now());
+	    return now.toJSON().split('T')[0]
+	  };
+
+	  var createInvoice = function () {
+	    var ids = Object.entries(S.checks)
+	      .sort(function (a,b) { return +a[0] > +b[0] ? 1 : -1; })
+	      .reduce(function (a,ref) {
+	      var k = ref[0];
+	      var v = ref[1];
+	if (v) { a.push(+k); } return a}, []);
+	    var projid = S.times.find(function (ref) {
+	      var id = ref.id;
+
+	      return id === ids[0];
+	    }).id;
+	    var total = S.times
+	      .filter(function (ref) {
+	        var id = ref.id;
+
+	        return ids.includes(id);
+	    })
+	      .reduce(function (a,c) { return (a += c.total, a); }, 0);
+
+	    A.post('invoices', {date: getdate(), projid: projid, total: total, times: ids.join(',')})
+	    .then(function () {})
+	    .catch(console.log);
+	  };
+
+	  return {
+	    onbeforeupdate: function () {
+	      if (!S.loaded) {
+	        A.init()
+	        .then(A.initChecks);
+	      }
+	    },
+
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('div', {class: 'flex'},
+	          m('h2', {class: 'text-2xl font-bold mb-3'}, 'Times'),
+	          m('button', {
+	            class: S.classes.plus,
+	            onclick: function () {
+	              S.time = {};
+	              m.route.set('/time');
+	            }
+	          }, '+')
+	        ),
+	        m('div', {class: 'mb-3'},
+	          m('button', {
+	            class: 'mr-3 ' + S.classes.button,
+	            onclick: function () { return m.route.set('/json'); }
+	          }, 'Copy Json'),
+	          m('button', {
+	            class: S.classes.button,
+	            onclick: createInvoice
+	          }, 'Create Invoice')
+	        ),
+	        m('div',
+	          S.times.length > 0
+	          ? m('table',
+	              m('thead',
+	                m('tr',
+	                  ['', 'date', 'project', 'hours', 'price', 'total', 'description', '']
+	                  .map(function (x) { return m('th', {class: 'text-left px-3'}, x); }
+	                  )
+	                )
+	              ),
+	              m('tbody',
+	                S.times.map(function (time) { return m('tr', {class: 'hover:bg-slate-50'},
+	                    m('td',
+	                      m('input', {
+	                        type: 'checkbox',
+	                        checked: S.checks[time.id],
+	                        onchange: function () { return S.checks[time.id] = !S.checks[time.id]; }
+	                      })
+	                    ),
+	                    ['date', 'projname', 'hours', 'price', 'total', 'description'].map(function (x) { return x === 'projname'
+	                      ? m('td', {class: 'px-3'}, proj(time.projid, 'name'))
+	                      : x === 'total'
+	                        ? m('td', {class: 'px-3'},
+	                            curs[(proj(time.projid, 'currency'))] +
+	                            ((Math.round((time.hours * time.price) * 100)) / 100).toFixed(2)
+	                          )
+	                        : m('td', {class: 'px-3'}, time[x]); }
+	                      ),
+	                    m('td', {class: 'flex'},
+	                      m('span', {
+	                        class: 'cursor-pointer',
+	                        title: 'edit',
+	                        onclick: function () {
+	                          S.time = time;
+	                          m.route.set('/time');
+	                        }
+	                      }, svgs.edit),
+	                      m('span', {
+	                        class: 'cursor-pointer',
+	                        title: 'copy',
+	                        onclick: function () {
+	                          time.id;
+	                          var rest = objectWithoutProperties$3( time, ["id"] );
+	                          var body = rest;
+	                          A.post('times', body);
+	                        }
+	                      }, svgs.copy),
+	                      m('span', {
+	                        class: 'cursor-pointer mt-0.5',
+	                        onclick: function () {
+	                          if (confirm(`Are you sure you wish to delete this time entry?`)) {
+	                            A.del('times', time.id);
+	                          }
+	                        }
+	                      }, svgs.crossred)
+	                    )
+	                  ); }
+	                )
+	              )
+	            )
+	          : m('h5', {class: 'text-lg font-bold'}, 'No time entries found')
+	        )
+	      ); }
+	  }
+	}
+
+	function objectWithoutProperties$2 (obj, exclude) { var target = {}; for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj, k) && exclude.indexOf(k) === -1) target[k] = obj[k]; return target; }
+
+	function time (ref) {
+	  var ref_attrs = ref.attrs;
+	  var S = ref_attrs.S;
+	  var A = ref_attrs.A;
+
+	  if (!S.loaded) { A.init(); }
+
+	  var action = S.time.id ? 'put' : 'post';
+	  var cred = action === 'post' ? 'Create' : 'Edit';
+
+	  var save = function () {
+	    if (action === 'post') {
+	      A.post('times', S.time)
+	      .then(function () { return m.route.set('/times'); })
+	      .catch(console.log);
+	    }
+	    else {
+	      var ref = S.time;
+	      var id = ref.id;
+	      var rest = objectWithoutProperties$2( ref, ["id"] );
+	      var body = rest;
+	      A.put('times', id, body)
+	      .then(function () { return m.route.set('/times'); })
+	      .catch(console.log);
+	    }
+	  };
+
+	  return {
+	    onbeforeupdate: function () {
+	      if (!S.loaded) { A.init(); }
+	    },
+
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('h2', {class: 'text-2xl font-bold mb-3'}, `${cred} time entry`),
+	        m('form', {class: 'flex flex-col gap-[20px]'},
+	          m('div', {class: 'flex'},
+	            m('label', {class: 'w-[100px] capitalize'}, 'Date'),
+	            m('input', {
+	              type: 'date',
+	              class: 'px-2',
+	              value: S.time.date,
+	              onchange: function (e) { return S.time.date = e.target.value; }
+	            })
+	          ),
+	          ['description', 'hours', 'price', 'code'].map(function (x) { return m('div', {class: 'flex'},
+	              m('label', {class: 'w-[100px] capitalize'}, x),
+	              m('input', {
+	                class: 'px-2',
+	                value: S.time[x],
+	                onchange: function (e) { return S.time[x] = (x === 'hours' || x === 'price') ? +e.target.value : e.target.value; }
+	              })
+	            ); }
+	          ),
+	          [{code: 'projid', name: 'Project', arr: 'projects'},
+	           {code: 'compid', name: 'Company', arr: 'companies'}].map(function (x) { return m('div', {class: 'flex'},
+	              m('label', {class: 'w-[100px] capitalize'}, x.name),
+	              m('select', {
+	                  name: x.code,
+	                  style: 'padding: 0 8px',
+	                  value: S.time[x.code],
+	                  onchange: function (e) { return S.time[x.code] = +e.target.value; }
+	                },
+	                S[x.arr].map(function (y) { return m('option', {value: y.id}, y.name); }
+	                )
+	              )
+	            ); }
+	          )
+	        ),
+	        m('button', {
+	          class: 'w-[120px] mt-5 ' + S.classes.button,
+	          onclick: function () { return save(); }
+	        }, 'Save')
+	      ); }
+	  }
+	}
+
+	function json (ref) {
+	  var S = ref.attrs.S;
+
+	  var make = function () { return S.times
+	    .filter(function (time) { return S.checks[time.id]; })
+	    .reduce(function (a,c) { return (a.push({project: c.code, who: 'Oscar Bannink', comment: c.description, hr: c.hours, date: c.date}), a); }, [])
+	    .sort(function (a,b) { return a.date > b.date ? 1 : -1; }); };
+
+	  return {
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('div', {class: 'mb-3'},
+	          m('button', {
+	              class: S.classes.button,
+	              onclick: function () {
+	                navigator.clipboard.writeText(document.getElementById('json').innerHTML);
+	              }
+	            },
+	            'Copy to Clipboard'
+	          )
+	        ),
+	        m('pre#json', JSON.stringify(make(), null, 2))
+	      ); }
+	  }
+	}
+
+	var Modal = function () {
+	  var txt = {
+	    savHTML: `save HTML`,
+	    makePDF: `make PDF`,
+	    movePDF: `move PDF`,
+	    delHTML: `delete HTML`
+	  };
+
+	  return {
+	    view: function (ref) {
+	        var ref_attrs = ref.attrs;
+	        var res = ref_attrs.res;
+	        var cls = ref_attrs.cls;
+	        var click = ref_attrs.click;
+
+	        return m('div', {class: 'fixed top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-black opacity-80'},
+	        m('div', {class: 'text-center mb-2.5 p-5 w-52 h-52 bg-white'},
+	          ['savHTML', 'makePDF', 'movePDF', 'delHTML']
+	          .map(function (x) { return m('div', {class: 'flex'},
+	              m('span', {class: 'w-24 ml-4 mr-1 text-left'}, txt[x]),
+	              m('span', res[x] ? svgs.crossredsm : svgs.check)); }
+	            ),
+	          m('div', {class: 'mt-2'},
+	            m('button', {class: cls, onclick: click}, "OK")
+	          )
+	        )
+	      );
+	  }
+	    }
+	};
+
+	function invoices (ref) {
+	  var ref_attrs = ref.attrs;
+	  var S = ref_attrs.S;
+	  var A = ref_attrs.A;
+
+	  if (!S.loaded) { A.init(); }
+
+	  var curs = {USD: '$', EUR: '€'};
+	  var proj = function (id, prop) {
+	    var p = S.projects.find(function (proj) { return proj.id === id; });
+	    return p ? p[prop] : ''
+	  };
+	  var pdfres = null;
+
+	  var pdf = function () {
+	    var proj = S.projects.find(function (ref) {
+	      var id = ref.id;
+
+	      return id === S.invo.projid;
+	    });
+	    var ids = S.invo.times.split(',').map(Number);
+	    var times = S.times.filter(function (ref) {
+	      var id = ref.id;
+
+	      return ids.includes(id);
+	    }).reverse();
+	    var comp = S.companies.find(function (ref) {
+	      var id = ref.id;
+
+	      return id === times[0].compid;
+	    });
+	    A.post('pdf', {invo: S.invo, comp: comp, proj: proj, times: times})
+	    .then(function (res) { return pdfres = res; })
+	    .catch(console.log);
+	  };
+
+	  return {
+	    onbeforeupdate: function () {
+	      if (!S.loaded) { A.init(); }
+	    },
+
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('h2', {class: 'text-2xl font-bold mb-2'}, 'Invoices'),
+	        m('div',
+	          S.invoices.length > 0
+	          ? m('table',
+	              m('thead',
+	                m('tr',
+	                  ['date', 'project', 'total', '']
+	                  .map(function (x) { return m('th', {class: 'text-left px-3'}, x); }
+	                  )
+	                )
+	              ),
+	              m('tbody',
+	                S.invoices.map(function (invo) { return m('tr',
+	                    m('td', {class: 'px-3'}, invo.date),
+	                    m('td', {class: 'px-3'}, proj(invo.projid, 'name')),
+	                    m('td', {class: 'px-3'}, curs[(proj(invo.projid, 'currency'))] + invo.total),
+	                    m('td', {class: 'flex'},
+	                      m('span', {
+	                        class: 'cursor-pointer mr-1.5 mt-1',
+	                        title: 'pdf',
+	                        onclick: function () {
+	                          S.invo = invo;
+	                          pdf();
+	                        }
+	                      }, svgs.pdf),
+	                      m('span', {
+	                        class: 'cursor-pointer mt-0.5',
+	                        title: 'preview',
+	                        onclick: function () {
+	                          S.invo = invo;
+	                          m.route.set('/preview');
+	                        }
+	                      }, svgs.eye),
+	                      m('span', {
+	                        class: 'cursor-pointer',
+	                        onclick: function () {
+	                          if (confirm(`Are you sure you wish to delete ${invo.name}?`)) {
+	                            A.del('invoices', invo.id);
+	                          }
+	                        }
+	                      }, svgs.crossred)
+	                    )
+	                  ); }
+	                )
+	              )
+	            )
+	          : m('h5', {class: 'text-lg font-bold'}, 'No invoices found')
+	        ),
+	        pdfres && m(Modal, {res: pdfres, cls: S.classes.button, click: function () { return pdfres = null; }})
+	      ); }
+	  }
+	}
+
+	function config (ref) {
+	  var ref_attrs = ref.attrs;
+	  var S = ref_attrs.S;
+	  var A = ref_attrs.A;
+
+	  if (!S.loaded) { A.init(); }
+
+	  return {
+	    onbeforeupdate: function () {
+	      if (!S.loaded) { A.init(); }
+	    },
+
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('div', {class: 'flex mb-2'},
+	          m('h2', {class: 'text-2xl font-bold'}, 'Companies'),
+	          m('button', {
+	            class: S.classes.plus,
+	            onclick: function () {
+	              S.comp = {};
+	              m.route.set('/company');
+	            }
+	          }, '+')
+	        ),
+	        m('div',
+	          S.companies.length > 0
+	          ? m('table',
+	              m('tbody',
+	                S.companies.map(function (company) { return m('tr',
+	                    m('td', {class: 'px-3'}, company.name),
+	                    m('td', {class: 'flex'},
+	                      m('span', {
+	                        class: 'cursor-pointer',
+	                        title: 'edit',
+	                        onclick: function () {
+	                          S.comp = company;
+	                          m.route.set('/company');
+	                        }
+	                      }, svgs.edit),
+	                      m('span', {
+	                        class: 'cursor-pointer mt-0.5',
+	                        onclick: function () {
+	                          if (confirm(`Are you sure you wish to delete ${company.name}?`)) {
+	                            A.del('companies', company.id);
+	                          }
+	                        }
+	                      }, svgs.crossred)
+	                    )
+	                  ); }
+	                )
+	              )
+	            )
+	          : m('h5', {class: 'text-lg font-bold'}, 'No company found')
+	        ),
+
+	        m('div', {class: 'flex mt-8 mb-2'},
+	          m('h2', {class: 'text-2xl font-bold'}, 'Projects'),
+	          m('button', {
+	            class: S.classes.plus,
+	            onclick: function () {
+	              S.comp = {};
+	              m.route.set('/project');
+	            }
+	          }, '+')
+	        ),
+	        m('div',
+	          S.projects.length > 0
+	          ? m('table',
+	              m('tbody',
+	                S.projects.map(function (project) { return m('tr',
+	                    m('td', {class: 'px-3'}, project.name),
+	                    m('td', {class: 'flex'},
+	                      m('span', {
+	                        class: 'cursor-pointer',
+	                        title: 'edit',
+	                        onclick: function () {
+	                          S.proj = project;
+	                          m.route.set('/project');
+	                        }
+	                      }, svgs.edit),
+	                      m('span', {
+	                        class: 'cursor-pointer mt-0.5',
+	                        onclick: function () {
+	                          if (confirm(`Are you sure you wish to delete ${project.name}?`)) {
+	                            A.del('projects', project.id);
+	                          }
+	                        }
+	                      }, svgs.crossred)
+	                    )
+	                  ); }
+	                )
+	              )
+	            )
+	          : m('h5', {class: 'text-lg font-bold'}, 'No projects found')
+	        )
+	      ); }
+	  }
+	}
+
+	function objectWithoutProperties$1 (obj, exclude) { var target = {}; for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj, k) && exclude.indexOf(k) === -1) target[k] = obj[k]; return target; }
+
+	function company (ref) {
+	  var ref_attrs = ref.attrs;
+	  var S = ref_attrs.S;
+	  var A = ref_attrs.A;
+
+	  if (!S.loaded) { A.init(); }
+
+	  var action = S.comp.id ? 'put' : 'post';
+	  var cred = action === 'post' ? 'Create' : 'Edit';
+
+	  var save = function () {
+	    if (action === 'post') {
+	      A.post('companies', S.comp)
+	      .then(function () { return m.route.set('/config'); })
+	      .catch(console.log);
+	    }
+	    else {
+	      var ref = S.comp;
+	      var id = ref.id;
+	      var rest = objectWithoutProperties$1( ref, ["id"] );
+	      var body = rest;
+	      A.put('companies', id, body)
+	      .then(function () { return m.route.set('/config'); })
+	      .catch(console.log);
+	    }
+	  };
+
+	  return {
+	    onbeforeupdate: function () {
+	      if (!S.loaded) { A.init(); }
+	    },
+
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('h2', {class: 'text-2xl font-bold mb-3'}, `${cred} company`),
+	        m('form', {class: 'flex flex-col gap-[20px]'},
+	          ['name', 'address', 'city', 'country', 'coc', 'vat'].map(function (x) { return m('div', {class: 'flex'},
+	              m('label', {class: 'w-[100px] capitalize'},
+	                x === 'coc' ? 'CoC/KvK' :
+	                x === 'vat' ? 'VAT/BTW' :
+	                x
+	              ),
+	              m('input', {
+	                class: 'px-2',
+	                value: S.comp[x],
+	                onchange: function (e) { return S.comp[x] = e.target.value; }
+	              })
+	            ); }
+	          )
+	        ),
+	        m('button', {
+	          class: 'w-[120px] mt-5 ' + S.classes.button,
+	          onclick: function () { return save(); }
+	        }, 'Save')
+	      ); }
+	  }
+	}
+
+	function objectWithoutProperties (obj, exclude) { var target = {}; for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj, k) && exclude.indexOf(k) === -1) target[k] = obj[k]; return target; }
+
+	function project (ref) {
+	  var ref_attrs = ref.attrs;
+	  var S = ref_attrs.S;
+	  var A = ref_attrs.A;
+
+	  if (!S.loaded) { A.init(); }
+
+	  var action = S.proj.id ? 'put' : 'post';
+	  var cred = action === 'post' ? 'Create' : 'Edit';
+
+	  var save = function () {
+	    if (action === 'post') {
+	      A.post('projects', S.proj)
+	      .then(function () { return m.route.set('/config'); })
+	      .catch(console.log);
+	    }
+	    else {
+	      var ref = S.proj;
+	      var id = ref.id;
+	      var rest = objectWithoutProperties( ref, ["id"] );
+	      var body = rest;
+	      A.put('projects', id, body)
+	      .then(function () { return m.route.set('/config'); })
+	      .catch(console.log);
+	    }
+	  };
+
+	  return {
+	    onbeforeupdate: function () {
+	      if (!S.loaded) { A.init(); }
+	    },
+
+	    view: function () { return m('div', {class: 'p-4'},
+	        m('h2', {class: 'text-2xl font-bold mb-3'}, `${cred} project`),
+	        m('form', {class: 'flex flex-col gap-[20px]'},
+	          ['name', 'address', 'city', 'country', 'bank', 'currency', 'tax', 'language'].map(function (x) { return m('div', {class: 'flex'},
+	              m('label', {class: 'w-[100px] capitalize'}, x),
+	              x === 'currency'
+	              ? m('select', {
+	                    style: 'padding: 0 8px',
+	                    value: S.proj[x],
+	                    onchange: function (e) { return S.proj[x] = e.target.value; }
+	                  },
+	                  ['USD', 'EUR'].map(function (y) { return m('option', {value: y}, y); })
+	                )
+	              : x === 'language'
+	                ? m('select', {
+	                      style: 'padding: 0 8px',
+	                      value: S.proj[x],
+	                      onchange: function (e) { return S.proj[x] = e.target.value; }
+	                    },
+	                    Object.entries({EN: 'English', NL: 'Nederlands'})
+	                    .map(function (ref) {
+	                      var k = ref[0];
+	                      var v = ref[1];
+
+	                      return m('option', {value: k}, v);
+	              })
+	                  )
+	                : m('input', {
+	                    class: 'px-2',
+	                    value: S.proj[x],
+	                    onchange: function (e) { return S.proj[x] = x === 'tax' ? +e.target.value : e.target.value; }
+	                  })
+	            ); }
+	          )
+	        ),
+	        m('button', {
+	          class: 'w-[120px] mt-5 ' + S.classes.button,
+	          onclick: function () { return save(); }
+	        }, 'Save')
+	      ); }
+	  }
+	}
+
+	var txt = function (field, idx) { return ({
+	  title: ['Invoice', 'Factuur'],
+	  coc: ['CoC: ', 'KvK: '],
+	  vat: ['VAT: ', 'BTW: '],
+	  nr: ['Invoice number: ', 'Factuurnummer: '],
+	  date: ['Date', 'Datum'],
+	  description: ['Description', 'Omschrijving'],
+	  price: ['Price', 'Prijs'],
+	  hours: ['Hours', 'Uren'],
+	  total: ['Total', 'Totaal'],
+	  sub: ['Subtotal', 'Subtotaal'],
+	  tax: ['Tax ',  'BTW ']
+	}[field][idx]); };
+
+	function preview (ref) {
+	  var S = ref.attrs.S;
+
+	  var proj = S.projects.find(function (ref) {
+	    var id = ref.id;
+
+	    return id === S.invo.projid;
+	  });
+	  var ids = S.invo.times.split(',').map(Number);
+	  var times = S.times.filter(function (ref) {
+	    var id = ref.id;
+
+	    return ids.includes(id);
+	  }).reverse();
+	  var comp = S.companies.find(function (ref) {
+	    var id = ref.id;
+
+	    return id === times[0].compid;
+	  });
+
+	  var idx = proj.language === 'EN' ? 0 : 1;
+	  var curs = {USD: '$', EUR: '€'};
+	  var getym = function (date) { return date.replaceAll('-', '').slice(2); };
+	  var calctax = function (perc, total) { return ((Math.round(((perc / 100) * total) * 100)) / 100); };
+
+	  return {
+	    view: function () { return m('div', {style: 'position:relative; width:100vw; height:100vh'},
+	        m('div', {style: 'width:970px; margin:0 auto; padding:20px'},
+	          m('div', {style: 'display:flex; justify-content:space-between; align-items:center'},
+	            m('div', {style: 'font-size: 2.25rem'}, txt('title', idx)),
+	            m('div', {style: 'margin-top:9px; font-size: 1rem; font-style:italic'}, S.invo.date)
+	          ),
+	          m('hr', {style: 'border-top:1px solid black'}),
+	          m('div', {style: 'display:flex; justify-content:space-between; margin-top:20px'},
+	            m('div',
+	              m('div', {style: 'font-weight:bold'}, proj.name),
+	              m('div', proj.address),
+	              m('div', proj.city),
+	              m('div', proj.country)
+	            ),
+	            m('div', {style: 'margin-right:20px'},
+	              m('div', {style: 'font-weight:bold'}, comp.name),
+	              m('div', comp.address),
+	              m('div', comp.city),
+	              m('div', comp.country),
+	              m('div', {style: 'margin-top:3px'}, txt('coc', idx) + comp.coc),
+	              m('div', txt('vat', idx) + comp.vat),
+	              m('div', `Bank: ${proj.bank}`)
+	            )
+	          ),
+	          m('div', {style: 'margin-top:90px'}, txt('nr', idx) + getym(S.invo.date)),
+	          m('div', {style: 'margin-top:60px'},
+	            m('table', {style: 'width:100%; text-align:left; font-size:18px'},
+	              m('thead',
+	                ['date', 'description', 'price', 'hours', 'total']
+	                .map(function (x) { return m('th', txt(x, idx)); })
+	              ),
+	              m('tbody',
+	                times.map(function (time) { return m('tr', {style: 'height:28px'},
+	                    m('td', {style: 'width:120px'}, time.date),
+	                    m('td', time.description),
+	                    m('td', curs[proj.currency] + time.price.toFixed(2)),
+	                    m('td', time.hours.toFixed(1)),
+	                    m('td', {style: 'width:100px'}, curs[proj.currency] + time.total.toFixed(2))
+	                  ); }
+	                ),
+	                m('tr',
+	                  m('td', {colspan: 4}),
+	                  m('td',
+	                    m('hr', {style: 'border-top:1px solid black'})
+	                  )
+	                ),
+	                m('tr',
+	                  m('td', {colspan: 3}),
+	                  m('td', {style: 'padding-top:8px'}, txt('sub', idx)),
+	                  m('td', curs[proj.currency] + S.invo.total.toFixed(2))
+	                ),
+	                m('tr',
+	                  m('td', {colspan: 3}),
+	                  m('td', {style: 'padding-top:5px'}, `${txt('tax', idx)} (${proj.tax}%)`),
+	                  m('td', curs[proj.currency] + calctax(proj.tax, S.invo.total).toFixed(2))
+	                ),
+	                m('tr', {style: 'font-weight:bold'},
+	                  m('td', {colspan: 3}),
+	                  m('td', {style: 'padding-top:5px; font-size:18px; font-weight:bold'}, txt('total', idx)),
+	                  m('td', curs[proj.currency] + (S.invo.total + calctax(proj.tax, S.invo.total)).toFixed(2))
+	                )
+	              )
+	            )
+	          )
+	        )
+	      ); }
+	  }
+	}
+
+	var S = state();
+	var A = actions(S);
+
+	var routes = {
+	  '/'        : {render: function () { return m(layout, {A: A}, m(times,    {S: S,A: A})); }},
+	  '/times'   : {render: function () { return m(layout, {A: A}, m(times,    {S: S,A: A})); }},
+	  '/time'    : {render: function () { return m(layout, {A: A}, m(time,     {S: S,A: A})); }},
+	  '/json'    : {render: function () { return m(layout, {A: A}, m(json,     {S: S})); }},
+	  '/invoices': {render: function () { return m(layout, {A: A}, m(invoices, {S: S,A: A})); }},
+	  '/config'  : {render: function () { return m(layout, {A: A}, m(config,   {S: S,A: A})); }},
+	  '/company' : {render: function () { return m(layout, {A: A}, m(company,  {S: S,A: A})); }},
+	  '/project' : {render: function () { return m(layout, {A: A}, m(project,  {S: S,A: A})); }},
+	  '/preview' : {render: function () { return m(preview, {S: S}); }}
+	};
+
+	m.route(document.body, '/', routes);
+
+})();
