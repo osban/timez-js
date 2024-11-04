@@ -5,6 +5,7 @@ export default ({attrs: {S,A}}) => {
   const cred = action === 'post' ? 'Create' : 'Edit'
 
   const save = () => {
+    S.time.total = S.time.hours * S.time.price
     if (action === 'post') {
       A.post('times', S.time)
       .then(() => m.route.set('/times'))

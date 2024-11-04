@@ -21,13 +21,12 @@ export default ({attrs: {S,A}}) => {
     const ids = Object.entries(S.checks)
       .sort((a,b) => +a[0] > +b[0] ? 1 : -1)
       .reduce((a,[k,v]) => {if (v) a.push(+k); return a}, [])
-    const projid = S.times.find(({id}) => id === ids[0]).id
+    const projid = S.times.find(({id}) => id === ids[0]).projid
     const total = S.times
       .filter(({id}) => ids.includes(id))
       .reduce((a,c) => (a += c.total, a), 0)
-
     A.post('invoices', {date: getdate(), projid, total, times: ids.join(',')})
-    .then(() => {})
+    .then(() => m.route.set('/invoices'))
     .catch(console.log)
   }
 
