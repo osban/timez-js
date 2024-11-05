@@ -40,7 +40,7 @@ export default (S, A = {
     api.put(`/api/${table}/${id}`, {body})
     .then(() => {
       const idx = S[table].findIndex(x => x.id === id)
-      S[table][idx] = body
+      S[table][idx] = {id, ...body}
     })
     .catch(console.log),
 

@@ -1,12 +1,12 @@
 export default ({attrs: {S,A}}) => {
   if (!S.loaded) A.init()
 
-  const action = S.time.id ? 'put' : 'post'
-  const cred = action === 'post' ? 'Create' : 'Edit'
+  const action = () => S.time.id ? 'put' : 'post'
+  const cred = action() === 'post' ? 'Create' : 'Edit'
 
   const save = () => {
     S.time.total = S.time.hours * S.time.price
-    if (action === 'post') {
+    if (action() === 'post') {
       A.post('times', S.time)
       .then(() => m.route.set('/times'))
       .catch(console.log)
